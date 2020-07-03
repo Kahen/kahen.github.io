@@ -1,680 +1,250 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8" />
-  
-  <title>Kahen的个人技术博客</title>
-  <meta name="author" content="Kahen" />
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kahen的个人技术博客</title><meta name="description"><meta name="author" content="Kahen"><meta name="copyright" content="Kahen"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kahen.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Kahen的个人技术博客"><meta property="og:url" content="https://kahen.github.io/"><meta property="og:site_name" content="Kahen的个人技术博客"><meta property="og:description"><meta property="og:image" content="https://kahen.github.io/img/avatar.png"><meta property="article:published_time" content="2020-07-03T12:08:22.090Z"><meta property="article:modified_time" content="2020-07-03T12:08:22.090Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
 
-  
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
 
-  
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  
-  <meta property="og:site_name" content="Kahen的个人技术博客" />
-
-  
-  
-
-  
-    <meta property="og:image" content="" />
-  
-
-  
-  <link href="/css/images/favicon.ico" rel="icon" />
-  
-
-  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-<meta name="generator" content="Hexo 4.2.1"></head>
-
-
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Kahen的个人技术博客</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.823Z"><a href="/2020/07/03/找出旋转有序数列的中间值/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#5<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个有序数列随机旋转之后的数列，如原有序数列为：[0,1,2,4,5,6,7] ，旋转之后为[4,5,6,7,0,1,2]。 假定数列中无重复元素，且数列长度为奇数。 求出旋转数列的中间值。如数列[4,5,6,7,0,1,2]的中间值为4。</p>
-<p>输入</p>
-<pre><code>4,5,6,7,0,1,2</code></pre><p>输出</p>
-<pre><code>4</code></pre><p>输入样例</p>
-<pre><code>1
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">37</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Kahen的个人技术博客</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Kahen的个人技术博客</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Kahen" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kahenlee@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E6%89%BE%E5%87%BA%E6%97%8B%E8%BD%AC%E6%9C%89%E5%BA%8F%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%AD%E9%97%B4%E5%80%BC/" title="找出旋转有序数列的中间值">找出旋转有序数列的中间值</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#5难度：一般时间限制：1000ms内存限制：10M描述给出一个有序数列随机旋转之后的数列，如原有序数列为：[0,1,2,4,5,6,7] ，旋转之后为[4,5,6,7,0,1,2]。 假定数列中无重复元素，且数列长度为奇数。 求出旋转数列的中间值。如数列[4,5,6,7,0,1,2]的中间值为4。
+输入
+4,5,6,7,0,1,2输出
+4输入样例
+1
 1,2,3
 4,5,6,7,0,1,2
-12,13,14,5,6,7,8,9,10</code></pre><p>输出样例</p>
-<pre><code>1
+12,13,14,5,6,7,8,9,10输出样例
+1
 2
 4
-9</code></pre><p>分析：这题将数组重新排序很容易找到中间值</p>
-<pre><code class="java"><span class="comment">/**</span>
-<span class="comment">* 已引入：</span>
-<span class="comment">* java.util.*</span>
-<span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span>
-<span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span>
-<span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span>
-<span class="comment">* <span class="doctag">@return</span> 处理后的结果</span>
-<span class="comment">*/</span>
-<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>{
-    <span class="comment">// please write your code here</span>
-    String arr[]=line.split(<span class="string">","</span>);
-    <span class="keyword">int</span> arr2[]=<span class="keyword">new</span> <span class="keyword">int</span>[arr.length];
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++){
-        arr2[i]=Integer.parseInt(arr[i]);
-    }
-    Arrays.sort(arr2);
-    <span class="keyword">return</span> String.valueOf(arr2[arr2.length/<span class="number">2</span>]);
-    <span class="comment">// return ans;</span>
-}</code></pre>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.820Z"><a href="/2020/07/03/最长连续数列/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/最长连续数列/">最长连续数列</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#4<br>难度：困难<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>输入一个乱序的连续数列，输出其中最长连续数列长度，要求算法复杂度为 O(n) 。</p>
-<p>输入</p>
-<pre><code>54,55,300,12,56</code></pre><p>输出</p>
-<pre><code>3</code></pre><p>输入样例</p>
-<pre><code>100,4,200,1,3,2
+9分析：这题将数组重新排序很容易找到中间值
+/**
+* 已引入：
+* java.util.*
+* 要使用其他 jar 包请使用完整路径，如：
+* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);
+* @param  line 为单行测试数据
+* @return 处理后的结果
+*/
+private static String sol ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97/" title="最长连续数列">最长连续数列</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#4难度：困难时间限制：1000ms内存限制：10M描述输入一个乱序的连续数列，输出其中最长连续数列长度，要求算法复杂度为 O(n) 。
+输入
+54,55,300,12,56输出
+3输入样例
+100,4,200,1,3,2
 54,55,300,12
 1
 5,4,3,2,1
-1,2,3,4,5,6</code></pre><p>输出样例</p>
-<pre><code>4
+1,2,3,4,5,6输出样例
+4
 2
 1
 5
-6</code></pre><p>该题难度不高，将数组重新排序后，设置一个计数器计算最大连续数组即可</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// please write your code here</span></span><br><span class="line">     String[] s = line.split(<span class="string">","</span>);</span><br><span class="line">        <span class="keyword">int</span> [] a = <span class="keyword">new</span> <span class="keyword">int</span>[s.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;s.length;i++)&#123;</span><br><span class="line">            a[i] = Integer.parseInt(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a);</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">1</span>,max=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i + <span class="number">1</span>] - a[i] == <span class="number">1</span>) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">           max=max&gt;count?max:count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(max);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// return ans;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+6该题难度不高，将数组重新排序后，设置一个计数器计算最大连续数组即可
+1234567891011121314151617181920212223242526272829/*** 已引入：* java.util.** 要使用其他 jar 包请使用完整路径，如：* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);* @param  line 为单行测试数据* @return 处理后的结果*/private static String solution(String li ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E6%9E%84%E5%BB%BA%E7%9F%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="构建短字符串">构建短字符串</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#11难度：一般时间限制：1000ms内存限制：10M描述给定任意一个较短的子串，和另一个较长的字符串，判断短的字符串是否能够由长字符串中的字符组合出来，且长串中的每个字符只能用一次。
+输入
 
+一行数据包括一个较短的字符串和一个较长的字符串，用一个空格分隔，如： ab aab bb abc aa cccc uak areuok
 
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+输出
 
+如果短的字符串可以由长字符串中的字符组合出来，返回字符串 “true”，否则返回字符串 “false”，注意返回字符串类型而不是布尔型。
 
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.816Z"><a href="/2020/07/03/构建短字符串/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/构建短字符串/">构建短字符串</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#11<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给定任意一个较短的子串，和另一个较长的字符串，判断短的字符串是否能够由长字符串中的字符组合出来，且长串中的每个字符只能用一次。</p>
-<p>输入</p>
-<blockquote>
-<p>一行数据包括一个较短的字符串和一个较长的字符串，用一个空格分隔，<br>如： ab aab bb abc aa cccc uak areuok</p>
-</blockquote>
-<p>输出</p>
-<blockquote>
-<p>如果短的字符串可以由长字符串中的字符组合出来，返回字符串 “true”，否则返回字符串 “false”，注意返回字符串类型而不是布尔型。</p>
-</blockquote>
-<p>输入样例</p>
-<pre><code>a b
+输入样例
+a b
 aa ab
 aa aab
-uak areuok</code></pre><p>输出样例</p>
-<pre><code>false
+uak areuok输出样例
+false
 false
 true
-true</code></pre><p>解析：<br>题目简单，方法简单，但肯定不是最优解哈哈</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">		String[] str = line.split(<span class="string">" "</span>);</span><br><span class="line">		<span class="keyword">char</span>[] shorter = str[<span class="number">0</span>].toCharArray();</span><br><span class="line">		<span class="keyword">char</span>[] longer = str[<span class="number">1</span>].toCharArray();</span><br><span class="line">		<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; shorter.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; longer.length; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (shorter[i] == longer[j]) &#123;</span><br><span class="line">					flag++;</span><br><span class="line">					longer[j] = <span class="string">' '</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.812Z"><a href="/2020/07/03/和为零的三元组/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/和为零的三元组/">和为零的三元组</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#15<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个整数数组, 数组中是否存在任意 3 个数 a, b, c 满足 a + b + c = 0? 找出数组中所有满足以上条件的三元组，最后输出这些三元组的个数（包含相同元素的三元组只计算一次）。</p>
-<p>输入<br>一个包含多个整数（正或负）的字符串，每个整数之间用逗号（,）分隔，如：-1,0,1,2,-1,-4。</p>
-<p>输出<br>输入满足加和结果正好等于 0 的三元组的个数，如对于 -1,0,1,2,-1,-4 有 [-1, 0, 1] 和 [-1, -1, 2]，所以输出 2</p>
-<p>输入样例</p>
-<pre><code>-1,0,1,2,-1,-4</code></pre><p>输出样例</p>
-<pre><code>2</code></pre><p>希望我的代码能被看懂吧</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// please write your code here</span></span><br><span class="line">		String[] str = line.split(<span class="string">","</span>);</span><br><span class="line">		<span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[str.length];</span><br><span class="line">    <span class="keyword">if</span>(a.length&lt;<span class="number">3</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.valueOf(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">			a[i] = Integer.parseInt(str[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> headFlag=<span class="number">0</span>,endFlag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> fuck=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]!=<span class="number">0</span>) &#123;</span><br><span class="line">				fuck=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(fuck==<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.valueOf(<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; a.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> head = i + <span class="number">1</span>, end = a.length - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> n1=<span class="number">0</span>;<span class="keyword">int</span> n2=<span class="number">0</span>;<span class="keyword">int</span> n3=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (head &lt; end) &#123;</span><br><span class="line">					<span class="keyword">if</span> (a[i] + a[head] + a[end] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">						end--;</span><br><span class="line">						endFlag=<span class="number">1</span>;</span><br><span class="line">						headFlag=<span class="number">0</span>;</span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[i] + a[head] + a[end] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">						head++;</span><br><span class="line">						headFlag=<span class="number">1</span>;</span><br><span class="line">						endFlag=<span class="number">0</span>;</span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[i] + a[head] + a[end] == <span class="number">0</span>) &#123;</span><br><span class="line">						<span class="keyword">if</span>(a[i]!=n1||a[head]!=n2||a[end]!=n3) &#123;</span><br><span class="line">						count++;</span><br><span class="line">						n1=a[i];</span><br><span class="line">						n2=a[head];</span><br><span class="line">						n3=a[end];</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(head==i+<span class="number">1</span>) &#123;</span><br><span class="line">							headFlag=<span class="number">1</span>;</span><br><span class="line">							endFlag=<span class="number">0</span>;</span><br><span class="line">							head++;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(end==a.length-<span class="number">1</span>) &#123;</span><br><span class="line">							endFlag=<span class="number">1</span>;</span><br><span class="line">							headFlag=<span class="number">0</span>;</span><br><span class="line">							end--;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(endFlag==<span class="number">1</span>&amp;&amp;head &lt; end--) &#123;</span><br><span class="line">							end--;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span> <span class="keyword">if</span>(headFlag==<span class="number">1</span>&amp;&amp;head++&lt;end) &#123;</span><br><span class="line">							head++;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> String.valueOf(count);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.807Z"><a href="/2020/07/03/栈实现四则运算/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>序号：#16</strong><br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>实现一个算法，可以进行任意非负整数的加减乘除组合四则运算。</p>
-<p>请注意运算符的优先级。</p>
-<p>输入<br>请输入一行算式，使用空格分隔数字与运算符。</p>
-<p>数字为任意非负整数，运算符为+ - * /，不考虑括号。</p>
-<p>输出<br>输出算式的运算结果。如果是小数，请向下取整（包含中间步骤结果）。 如果出现“除0异常”，输出err。</p>
-<p>输入样例</p>
-<pre><code>3 + 5
+true解析：题目简单，方法简单，但肯定不是最优解哈哈
+1234567891011121314151617181920/*** 已引入：* java.util.** 要使用其他 jar 包请使用完整路径，如：* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.L ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E5%92%8C%E4%B8%BA%E9%9B%B6%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84/" title="和为零的三元组">和为零的三元组</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#15难度：有挑战时间限制：1000ms内存限制：10M描述给出一个整数数组, 数组中是否存在任意 3 个数 a, b, c 满足 a + b + c = 0? 找出数组中所有满足以上条件的三元组，最后输出这些三元组的个数（包含相同元素的三元组只计算一次）。
+输入一个包含多个整数（正或负）的字符串，每个整数之间用逗号（,）分隔，如：-1,0,1,2,-1,-4。
+输出输入满足加和结果正好等于 0 的三元组的个数，如对于 -1,0,1,2,-1,-4 有 [-1, 0, 1] 和 [-1, -1, 2]，所以输出 2
+输入样例
+-1,0,1,2,-1,-4输出样例
+2希望我的代码能被看懂吧
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475/*** 已引入：* java.util.** 要使用其他 jar 包请使用完整路径，如：* java.util.L ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E6%A0%88%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/" title="栈实现四则运算">栈实现四则运算</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#16难度：有挑战时间限制：1000ms内存限制：10M描述实现一个算法，可以进行任意非负整数的加减乘除组合四则运算。
+请注意运算符的优先级。
+输入请输入一行算式，使用空格分隔数字与运算符。
+数字为任意非负整数，运算符为+ - * /，不考虑括号。
+输出输出算式的运算结果。如果是小数，请向下取整（包含中间步骤结果）。 如果出现“除0异常”，输出err。
+输入样例
+3 + 5
 12 + 45 / 9
 1 / 2
 1 / 0
-12 + 34 * 56 - 78</code></pre><p>输出样例</p>
-<pre><code>8
+12 + 34 * 56 - 78输出样例
+8
 17
 0
 err
-1838</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String  <span class="title">solution</span><span class="params">(String line)</span></span></span><br><span class="line"><span class="function">	</span>&#123;   </span><br><span class="line">		Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;String&gt;();</span><br><span class="line">		String line1[] = line.split(<span class="string">" "</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;line1.length;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(line1[i].equals(<span class="string">"/"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(line1[i+<span class="number">1</span>].equals(<span class="string">"0"</span>))</span><br><span class="line">					<span class="keyword">return</span> <span class="string">"err"</span>;</span><br><span class="line">				stack.add(String.valueOf(Integer.parseInt(stack.pop())/Integer.parseInt(line1[++i])));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(line1[i].equals(<span class="string">"*"</span>))</span><br><span class="line">				stack.add(String.valueOf(Integer.parseInt(stack.pop())*Integer.parseInt(line1[++i])));</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				stack.add(line1[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span>[] a1 = <span class="keyword">new</span> <span class="keyword">int</span>[(stack.size()+<span class="number">1</span>)/<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">int</span> flag =<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> m =stack.size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">			&#123;a1[temp++] = Integer.parseInt(stack.pop());</span><br><span class="line">			flag =<span class="number">1</span>;&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(stack.pop().equals(<span class="string">"+"</span>))</span><br><span class="line">					&#123;sum+=a1[temp-<span class="number">1</span>];</span><br><span class="line">				flag =<span class="number">0</span>;&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					&#123;sum-=a1[temp-<span class="number">1</span>];</span><br><span class="line">					flag =<span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		sum+=a1[a1.length-<span class="number">1</span>];</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">	<span class="keyword">return</span> String.valueOf(sum);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+1838123456789101112131415161718192021222324252627282930313233343536373839404142434445public static String  solution(String line)	&#123;   		Stack&lt;String&gt; stack = new Stack&lt;String&gt;();		String line1[] = line.split(" ");		for(int i = 0;i&lt;l ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E6%89%BE%E5%87%BA%E5%8F%AF%E8%83%BD%E7%9A%84%E5%90%88%E7%9A%84%E7%BB%84%E5%90%88/" title="找出可能的合的组合">找出可能的合的组合</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#12难度：有挑战时间限制：1000ms内存限制：10M描述给出一组不重复的正整数，从这组数中找出所有可能的组合使其加合等于一个目标正整数 M，如：
+一组数为 1, 2, 3，目标数为 4，那么可能的加合组合为： 1, 1, 1, 1 1, 1, 2 1, 2, 1 1, 3 2, 1, 1 2, 2 3, 1 注意相同的组合数字顺序不同也算一种，所以这个例子的结果是 7 种。
+输入
 
 
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+
+一组连续不重复的 N 个正整数（, 隔开，0&lt;N&lt;100）以及目标正整数（与数组之间用空格隔开）
 
 
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.804Z"><a href="/2020/07/03/找出可能的合的组合/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/找出可能的合的组合/">找出可能的合的组合</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#12<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一组不重复的正整数，从这组数中找出所有可能的组合使其加合等于一个目标正整数 M，如：</p>
-<p>一组数为 1, 2, 3，目标数为 4，那么可能的加合组合为： 1, 1, 1, 1 1, 1, 2 1, 2, 1 1, 3 2, 1, 1 2, 2 3, 1 注意相同的组合数字顺序不同也算一种，所以这个例子的结果是 7 种。</p>
-<p>输入</p>
-<table>
-<thead>
-<tr>
-<th>一组连续不重复的 N 个正整数（, 隔开，0&lt;N&lt;100）以及目标正整数（与数组之间用空格隔开）</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>输出<br>|所有可能的加合等于目标正整数 M 的组合种数|  |<br>|———————-|–|<br>|                      |  |</p>
-<p>输入样例</p>
-<pre><code>1,2,3 4</code></pre><p>输出样例</p>
-<pre><code>7</code></pre><p>解析：枚举所有情况，通过递归的方式来完成。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> sum;</span><br><span class="line"><span class="function">String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">	String a1[] = line.split(<span class="string">" "</span>);</span><br><span class="line">	String a2[] = a1[<span class="number">0</span>].split(<span class="string">","</span>);</span><br><span class="line">	<span class="keyword">int</span> goal2 = Integer.parseInt(a2[a2.length - <span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">int</span> goal1 = Integer.parseInt(a2[<span class="number">0</span>]);</span><br><span class="line">	<span class="keyword">int</span> goal = Integer.parseInt(a1[<span class="number">1</span>]);</span><br><span class="line">	find(goal, goal1, goal2);</span><br><span class="line">	<span class="keyword">return</span> String.valueOf(sum);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> goal1, <span class="keyword">int</span> goal2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (goal2 &lt; goal1 || target &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (target == <span class="number">0</span>) &#123;</span><br><span class="line">		sum++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	find(target - goal2      , goal1      , goal2);</span><br><span class="line">	find(target              , goal1      , goal2 - <span class="number">1</span>);</span><br><span class="line">	find(target - goal2      , goal1      , goal2 - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
 
 
 
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.801Z"><a href="/2020/07/03/爬楼梯/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/爬楼梯/">爬楼梯</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#10<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>在你面前有一个n阶的楼梯，你一步只能上1阶或2阶。 请问计算出你可以采用多少种不同的方式爬完这个楼梯。</p>
-<p>输入<br>一个正整数，表示这个楼梯一共有多少阶</p>
-<p>输出<br>一个正整数，表示有多少种不同的方式爬完这个楼梯</p>
-<p>输入样例</p>
-<pre><code>5
-10</code></pre><p>输出样例</p>
-<pre><code>8
-89</code></pre><p>这题如果想到使用递归来解决应该比较好处理</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">	    <span class="comment">// please write your code here</span></span><br><span class="line">	    <span class="keyword">long</span> n=Long.parseLong(line);</span><br><span class="line">	    String re=Long.toString(count(n));</span><br><span class="line">	    <span class="keyword">return</span> re;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> f;<span class="comment">//标记</span></span><br><span class="line">		 <span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">		        f=<span class="number">1</span>;</span><br><span class="line">		 <span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">2</span>)</span><br><span class="line">		        f=<span class="number">2</span>;</span><br><span class="line">		 <span class="keyword">else</span></span><br><span class="line">		      f=count(n-<span class="number">1</span>)+count(n-<span class="number">2</span>);</span><br><span class="line">		  <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.797Z"><a href="/2020/07/03/大数相减/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/大数相减/">大数相减</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#3<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：100M</p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>两个长度超出常规整形变量上限的大数相减，请避免使用各语言内置大数处理库，如 Java.math.BigInteger 等。</p>
-<p><strong>输入</strong><br>有 N 行测试数据，每一行有两个代表整数的字符串 a 和 b，长度超过百位。规定 a&gt;=b，a, b &gt; 0。 测试结果可以用 linux 小工具 bc进行测试是否正确。</p>
-<p><strong>输出</strong><br>返回表示结果整数的字符串。</p>
-<p><strong>输入样例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739870-89513312312312378127398789513312312312378127398789513312312312378127398789513</span><br><span class="line">1231231237812739878951331231231237812739878951331231231237812739878951331230000000000000000000000001-331231231237812739878951331231231</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出样例</strong></p>
-<pre><code>1231231237812739878951331231231237812739878951331231231237812650365639018918853110413950365639018918853110413950365639018918853110413950357
-1231231237812739878951331231231237812739878951331231231237812739878620099998762187260121048668768770</code></pre><h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>   该题不能使用内置大数处理库，那么我们可以简单的使用字符数组储存输入字符串，考虑到位数不一致，我们将字符串倒转相减就可以得到结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// please write your code here</span></span><br><span class="line">        String[] s = line.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">char</span> [] a = <span class="keyword">new</span> StringBuilder(s[<span class="number">0</span>]).reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">char</span> [] b = <span class="keyword">new</span> StringBuilder(s[<span class="number">1</span>]).reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">int</span> [] minus = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;a.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> A = a[i]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">int</span> B;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;b.length)&#123;</span><br><span class="line">                B=b[i]-<span class="string">'0'</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                B=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            minus[i] = A-B;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder re = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;minus.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (minus[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                minus[i+<span class="number">1</span>]--;</span><br><span class="line">                minus[i]+=<span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            re.append(minus[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> re.reverse().toString().replaceAll(<span class="string">"^(0+)"</span>,<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.792Z"><a href="/2020/07/03/第一个缺失正数/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/第一个缺失正数/">第一个缺失正数</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#7<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个无序的数列，找出其中缺失的第一个正数，要求复杂度为 O(n) 如：[1,2,0]，第一个缺失为3。 如：[3,4,-1,1]，第一个缺失为2。</p>
-<p>输入</p>
-<pre><code>1,2,0</code></pre><p>输出</p>
-<pre><code>3</code></pre><p>输入样例</p>
-<pre><code>1,2,0
+输出|所有可能的加合等于目标正整数 M 的组合种数|  ||———————-|–||                      |  |
+输入样例
+1,2,3 4输出样例
+7解析：枚举所有情况，通过递归的方式来完成。
+1234567891011121314151617181920212223242526   static int sum;String solution(String line) &#123;	String a1[] = line.split(" ");	 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="爬楼梯">爬楼梯</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#10难度：一般时间限制：1000ms内存限制：10M描述在你面前有一个n阶的楼梯，你一步只能上1阶或2阶。 请问计算出你可以采用多少种不同的方式爬完这个楼梯。
+输入一个正整数，表示这个楼梯一共有多少阶
+输出一个正整数，表示有多少种不同的方式爬完这个楼梯
+输入样例
+5
+10输出样例
+8
+89这题如果想到使用递归来解决应该比较好处理
+123456789101112131415161718192021222324/*** 已引入：* java.util.** 要使用其他 jar 包请使用完整路径，如：* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);* @param  line 为单行测试数据* @return 处理后的结果*/private static String solution(String line) &#123;	    // please write your cod ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%87%8F/" title="大数相减">大数相减</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#3难度：有挑战时间限制：1000ms内存限制：100M
+描述两个长度超出常规整形变量上限的大数相减，请避免使用各语言内置大数处理库，如 Java.math.BigInteger 等。
+输入有 N 行测试数据，每一行有两个代表整数的字符串 a 和 b，长度超过百位。规定 a&gt;=b，a, b &gt; 0。 测试结果可以用 linux 小工具 bc进行测试是否正确。
+输出返回表示结果整数的字符串。
+输入样例
+121231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739870-895133123123123781273987895133123123123781273987895133123123123781273987895131231231237812739878951331231231237812739878951331231231237812739878951 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BC%BA%E5%A4%B1%E6%AD%A3%E6%95%B0/" title="第一个缺失正数">第一个缺失正数</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#7难度：有挑战时间限制：1000ms内存限制：10M描述给出一个无序的数列，找出其中缺失的第一个正数，要求复杂度为 O(n) 如：[1,2,0]，第一个缺失为3。 如：[3,4,-1,1]，第一个缺失为2。
+输入
+1,2,0输出
+3输入样例
+1,2,0
 3,4,-1,1
 -1,-3,-5
 1,2,3
--1,-10,0</code></pre><p>输出样例</p>
-<pre><code>3
+-1,-10,0输出样例
+3
 2
 1
 4
-1</code></pre><p>解析：排序后遍历得出第一个缺失正数，代码很差，运行时间打败了 18.75% 的 Java 8 玩家</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// please write your code here</span></span><br><span class="line">		String[] str = line.split(<span class="string">","</span>);</span><br><span class="line">		<span class="keyword">int</span>[] arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[str.length];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">			arr1[i] = Integer.parseInt(str[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(arr1);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr1[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (arr1[i] + <span class="number">1</span> != arr1[i + <span class="number">1</span>] &amp;&amp; i != arr1.length) &#123;</span><br><span class="line">					<span class="keyword">return</span> String.valueOf(arr1[i] + <span class="number">1</span>);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">return</span> String.valueOf(arr1[arr1.length - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> String.valueOf(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.788Z"><a href="/2020/07/03/交叉队列/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/交叉队列/">交叉队列</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#6<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出三个队列 s1，s2，s3 ，判断 s3 是否是由 s1 和 s2 交叉得来。 如：s1 为 aabcc ， s2 为 dbbca。 当 s3 为 aadbbcbcac 时，返回 true（即将 s1 拆成三部分： aa，bc，c 分别插入 s2 对应位置） 否则返回 false。</p>
-<p>输入</p>
-<pre><code>aabcc,dbbca,aadbbcbcac</code></pre><p>输出</p>
-<pre><code>true</code></pre><p>输入样例</p>
-<pre><code>aabcc,dbbca,aadbbcbcac
+1解析：排序后遍历得出第一个缺失正数，代码很差，运行时间打败了 18.75% 的 Java 8 玩家
+123456789101112131415161718192021222324252627/*** 已引入：* java.util.** 要使用其他 jar 包请使用完整路径，如：* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);* @param  line 为单行测试数据* @return 处理后的结果*/private static S ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/07/03/%E4%BA%A4%E5%8F%89%E9%98%9F%E5%88%97/" title="交叉队列">交叉队列</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-03 17:06:15"><i class="far fa-calendar-alt"></i>2020-07-03</time></div><div class="content">序号：#6难度：有挑战时间限制：1000ms内存限制：10M描述给出三个队列 s1，s2，s3 ，判断 s3 是否是由 s1 和 s2 交叉得来。 如：s1 为 aabcc ， s2 为 dbbca。 当 s3 为 aadbbcbcac 时，返回 true（即将 s1 拆成三部分： aa，bc，c 分别插入 s2 对应位置） 否则返回 false。
+输入
+aabcc,dbbca,aadbbcbcac输出
+true输入样例
+aabcc,dbbca,aadbbcbcac
 aabcc,dbbca,aadbbbaccc
 a,b,ab
 a,b,ba
 a,b,ac
 abc,bca,bcaabc
-abc,bca,aabbcc</code></pre><p>输出样例</p>
-<pre><code>true
-false
-true
+abc,bca,aabbcc输出样例
 true
 false
 true
-false</code></pre><p>解析：这题挺有意思，我想了很久，后来发现如果把其中s1/s2跟s3对比，如果把s3中与s1/s2相同的去掉，那么如果剩下的跟s2/s1相同则返回true，否则是false。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 在此处理单行数据</span></span><br><span class="line">  String[] strs = line.split(<span class="string">","</span>);</span><br><span class="line">  <span class="keyword">int</span> len1 = strs[<span class="number">0</span>].length();</span><br><span class="line">  <span class="keyword">int</span> len2 = strs[<span class="number">1</span>].length();</span><br><span class="line">  <span class="keyword">int</span> len3 = strs[<span class="number">2</span>].length();</span><br><span class="line">  <span class="keyword">if</span>((len1 + len2) != len3 )&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span> + <span class="string">""</span>;<span class="comment">//若第一串字符加第二串字符长度加起来不等于第三段，返回false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>((i + j) &lt; len3)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; len2 &amp;&amp; strs[<span class="number">1</span>].charAt(i) == strs[<span class="number">2</span>].charAt(k)) &#123;</span><br><span class="line">      i++;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j &lt; len1 &amp;&amp; strs[<span class="number">0</span>].charAt(j) == strs[<span class="number">2</span>].charAt(k))&#123;</span><br><span class="line">      j++;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(i+j != len3)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span> + <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回处理后的结果</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span> + <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-<nav id="pagination">
-  
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-  </nav>
-
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:kahen.github.io">
-  </form>
-</div>
-
-  
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  
-
-  
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2020 Kahen
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-<div id='bg'></div>
-</body>
-</html>
+true
+false
+true
+false解析：这题挺有意思，我想了很久，后来发现如果把其中s1/s2跟s3对比，如果把s3中与s1/s2相同的去掉，那么如果剩下的跟s2/s1相同则返回true，否则是false。
+12345678910111213141516171819202122232425262728293031323334353 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Kahen</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">Articles</div><div class="length_num">37</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="Bookmark"><i class="fas fa-bookmark"></i><span>Bookmark</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kahen" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kahenlee@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2020/07/03/%E6%89%BE%E5%87%BA%E6%97%8B%E8%BD%AC%E6%9C%89%E5%BA%8F%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%AD%E9%97%B4%E5%80%BC/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%89%BE%E5%87%BA%E6%97%8B%E8%BD%AC%E6%9C%89%E5%BA%8F%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%AD%E9%97%B4%E5%80%BC/" title="找出旋转有序数列的中间值">找出旋转有序数列的中间值</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97/" title="最长连续数列">最长连续数列</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%9E%84%E5%BB%BA%E7%9F%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%9E%84%E5%BB%BA%E7%9F%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="构建短字符串">构建短字符串</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E5%92%8C%E4%B8%BA%E9%9B%B6%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E5%92%8C%E4%B8%BA%E9%9B%B6%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84/" title="和为零的三元组">和为零的三元组</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%A0%88%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%A0%88%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/" title="栈实现四则运算">栈实现四则运算</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">23</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">May 2020</span><span class="card-archive-list-count">14</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">Article :</div><div class="webinfo-article-count">37</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">UV :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">PV :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Kahen</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleEffect = true
+if (subtitleEffect) { 
+  var typed = new Typed("#subtitle", {
+    strings: "今日事&#44;今日畢,Never put off till tomorrow what you can do today".split(","),
+    startDelay: 300,
+    typeSpeed: 150,
+    loop: true,
+    backSpeed: 50
+  })
+} else {
+  document.getElementById("subtitle").innerHTML = '今日事&#44;今日畢'
+}</script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>

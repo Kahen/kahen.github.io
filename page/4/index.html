@@ -1,612 +1,212 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8" />
-  
-  <title>Page 4 | Kahen的个人技术博客</title>
-  <meta name="author" content="Kahen" />
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kahen的个人技术博客</title><meta name="description"><meta name="author" content="Kahen"><meta name="copyright" content="Kahen"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kahen.github.io/page/4/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Kahen的个人技术博客"><meta property="og:url" content="https://kahen.github.io/page/4/"><meta property="og:site_name" content="Kahen的个人技术博客"><meta property="og:description"><meta property="og:image" content="https://kahen.github.io/img/avatar.png"><meta property="article:published_time" content="2020-07-03T12:08:22.111Z"><meta property="article:modified_time" content="2020-07-03T12:08:22.111Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
 
-  
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
 
-  
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">37</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Kahen的个人技术博客</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Kahen的个人技术博客</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Kahen" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kahenlee@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/linux%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E7%94%A8%E6%88%B7%E5%8F%8A%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="linux 第三章 用户及文件权限管理">linux 第三章 用户及文件权限管理</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:55"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">linux 第三章 用户及文件权限管理2.1 查看用户12345$ who am i或者$ who mom likes
 
-  
-  <meta property="og:site_name" content="Kahen的个人技术博客" />
+2.2创建用户1su add lilei
 
-  
-  
+2.3用户组查看用户组groups 命令 
+ 冒号之前表示用户，后面表示该用户所属的用户组。 
+方法二：查看 /etc/group 文件2.4 删除用户删除用户是很简单的事：
+1$ sudo deluser lilei --remove-home
 
-  
-    <meta property="og:image" content="" />
-  
+3.1 查看文件权限使用较长格式列出文件：
+1$ ls -l
 
-  
-  <link href="/css/images/favicon.ico" rel="icon" />
-  
-
-  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-<meta name="generator" content="Hexo 4.2.1"></head>
-
-
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Kahen的个人技术博客</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:55.305Z"><a href="/2020/05/19/linux 第三章 用户及文件权限管理/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/linux 第三章 用户及文件权限管理/">linux 第三章 用户及文件权限管理</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="linux-第三章-用户及文件权限管理"><a href="#linux-第三章-用户及文件权限管理" class="headerlink" title="linux 第三章 用户及文件权限管理"></a>linux 第三章 用户及文件权限管理</h1><h2 id="2-1-查看用户"><a href="#2-1-查看用户" class="headerlink" title="2.1 查看用户"></a>2.1 查看用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ who am i</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">$ who mom likes</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2创建用户"><a href="#2-2创建用户" class="headerlink" title="2.2创建用户"></a>2.2创建用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su add lilei</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3用户组"><a href="#2-3用户组" class="headerlink" title="2.3用户组"></a>2.3用户组</h2><h3 id="查看用户组"><a href="#查看用户组" class="headerlink" title="查看用户组"></a>查看用户组</h3><h4 id="groups-命令"><a href="#groups-命令" class="headerlink" title="groups 命令"></a>groups 命令</h4><p><img src="https://doc.shiyanlou.com/document-uid13labid3timestamp1454035714557.png/wm" alt="此处输入图片的描述"> </p>
-<p> 冒号之前表示用户，后面表示该用户所属的用户组。 </p>
-<h4 id="方法二：查看-etc-group-文件"><a href="#方法二：查看-etc-group-文件" class="headerlink" title="方法二：查看 /etc/group 文件"></a>方法二：查看 <code>/etc/group</code> 文件</h4><h2 id="2-4-删除用户"><a href="#2-4-删除用户" class="headerlink" title="2.4 删除用户"></a>2.4 删除用户</h2><p>删除用户是很简单的事：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo deluser lilei --remove-home</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-1-查看文件权限"><a href="#3-1-查看文件权限" class="headerlink" title="3.1 查看文件权限"></a>3.1 查看文件权限</h2><p>使用较长格式列出文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -l</span></span><br></pre></td></tr></table></figure>
-
-<p> 文件类型权限的示意图<img src="https://doc.shiyanlou.com/linux_base/3-9.png/wm" alt="img"> </p>
-<p> <img src="https://doc.shiyanlou.com/linux_base/3-10.png/wm" alt="img"> </p>
-<ul>
-<li>显示除了 <code>.</code>（当前目录）和 <code>..</code>（上一级目录）之外的所有文件，包括隐藏文件（Linux 下以 <code>.</code> 开头的文件为隐藏文件）。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -A</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>以列表模式显示</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -Al</span></span><br></pre></td></tr></table></figure>
-
-<p>查看某一个目录的完整属性，而不是显示目录里面的文件属性：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -dl &lt;目录名&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示所有文件大小，并以普通人类能看懂的方式呈现：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -AsSh</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-2-变更文件所有者"><a href="#3-2-变更文件所有者" class="headerlink" title="3.2 变更文件所有者"></a>3.2 变更文件所有者</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 注意当前的用户必须是 lilei</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果是 shiyanlou 用户需要切换到 lilei（如果之前已经删除需要重新创建下）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> su lilei</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /home/lilei</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> touch iphone6</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="E:%5CLegend%5CMarkDown%5C1584500543513.png" alt="1584500543513"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown shiyanlou iphone6  &#x2F;&#x2F;修改了文件所有者维shiyanlou</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-3-修改文件权限"><a href="#3-3-修改文件权限" class="headerlink" title="3.3 修改文件权限"></a>3.3 修改文件权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"echo \"hello shiyanlou\""</span> &gt; iphone6  </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod 600 iphone6   //修改权限</span></span><br></pre></td></tr></table></figure>
-
-<p>使用命令后其他用户没有权限读取iphone6这个文件</p>
-<p>另外，</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">s$</span><span class="bash"> chmod go-rw iphone6</span></span><br></pre></td></tr></table></figure>
-
-<p>可以达到相同的效果</p>
-<p> <code>g</code>、<code>o</code> 还有 <code>u</code> 分别表示 group、others 和 user，<code>+</code> 和 <code>-</code> 分别表示增加和去掉相应的权限。 </p>
-<h2 id="4-了解了adduser和useradd的区别"><a href="#4-了解了adduser和useradd的区别" class="headerlink" title="4 了解了adduser和useradd的区别"></a>4 了解了adduser和useradd的区别</h2><p> 其实 useradd、userdel 这类操作更像是一种命令，执行完了就返回。而 adduser 更像是一种程序，需要你输入、确定等一系列操作。 </p>
-<h2 id="5-作业"><a href="#5-作业" class="headerlink" title="5 作业"></a>5 作业</h2><p>操作过程</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su adduser loutest</span><br><span class="line">sudo 添加一个用户loutest，使用sudo创建文件/opt/forloutest，设置成用户loutest可以读写。</span><br><span class="line"></span><br><span class="line">步骤：1. sudo adduser loutest</span><br><span class="line"></span><br><span class="line">2.加入sudo组；sudo usermod sudo -G sudo loutest</span><br><span class="line"></span><br><span class="line">3.使用sudo创建文件: sudo touch /opt/forloutest</span><br><span class="line"></span><br><span class="line">4.设置成用户loutest可以读写: sudo chmod 600  /opt/forloutest</span><br><span class="line"></span><br><span class="line">结果：查看：ll /opt/forloutest /opt/forloutest</span><br><span class="line">cd /opt/</span><br><span class="line">ll forloutest</span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod 600 forloutest</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1584504708955.png" alt="1584504708955"></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:55.017Z"><a href="/2020/05/19/Spring Boot 整合shiro模拟前后端分离/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/Spring Boot 整合shiro模拟前后端分离/">Spring Boot 整合shiro模拟前后端分离</a></h1>
+ 文件类型权限的示意图 
   
 
-    </header>
-    <div class="entry">
-      
-        <h1 id="Spring-Boot整合shiro模拟前后端分离"><a href="#Spring-Boot整合shiro模拟前后端分离" class="headerlink" title="Spring Boot整合shiro模拟前后端分离"></a>Spring Boot整合shiro模拟前后端分离</h1><h2 id="加入全局异常监控"><a href="#加入全局异常监控" class="headerlink" title="加入全局异常监控"></a>加入全局异常监控</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.aspect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.UnauthorizedException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestControllerAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-02-01 11:13</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestControllerAdvice</span> <span class="comment">//以json串的形式返回出去</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppExceptionAdivse</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(value= &#123;UnauthorizedException<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">Map</span>&lt;<span class="title">String</span>, <span class="title">Object</span>&gt; <span class="title">unauthorized</span>() </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"code"</span>, <span class="number">302</span>);</span><br><span class="line">        map.put(<span class="string">"msg"</span>, <span class="string">"未授权"</span>);</span><br><span class="line">        System.out.println(<span class="string">"未授权"</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+显示除了 .（当前目录）和 ..（上一级目录）之外的所有文件，包括隐藏文件（Linux 下以 . 开头的文件为隐藏文件）。
 
-<h2 id="创建LoginController"><a href="#创建LoginController" class="headerlink" title="创建LoginController"></a>创建LoginController</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.common.ActiverUser;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.SecurityUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationException;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.UsernamePasswordToken;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.subject.Subject;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"login"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 登陆</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">login</span><span class="params">(String username, String password, HttpSession session)</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="comment">//封装token</span></span><br><span class="line">		UsernamePasswordToken token=<span class="keyword">new</span> UsernamePasswordToken(username, password);</span><br><span class="line">		<span class="comment">//得到主体</span></span><br><span class="line">		Subject subject = SecurityUtils.getSubject();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			subject.login(token);</span><br><span class="line">			ActiverUser activerUser = (ActiverUser) subject.getPrincipal();</span><br><span class="line">			session.setAttribute(<span class="string">"user"</span>, activerUser.getUser());</span><br><span class="line">			map.put(<span class="string">"code"</span>, <span class="number">200</span>);</span><br><span class="line">			map.put(<span class="string">"msg"</span>, <span class="string">"登陆成功"</span>);</span><br><span class="line">			<span class="keyword">return</span> map;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (AuthenticationException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			map.put(<span class="string">"code"</span>, -<span class="number">1</span>);</span><br><span class="line">			map.put(<span class="string">"msg"</span>, <span class="string">"登陆失败 用户名或密码不正确"</span>);</span><br><span class="line">			<span class="keyword">return</span> map;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建UserController"><a href="#创建UserController" class="headerlink" title="创建UserController"></a>创建UserController</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.annotation.RequiresPermissions;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequiresPermissions</span>(value= &#123;<span class="string">"user:query"</span>&#125;)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"query"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		map.put(<span class="string">"msg"</span>, <span class="string">"query"</span>);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@RequiresPermissions</span>(value= &#123;<span class="string">"user:add"</span>&#125;)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"add"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		map.put(<span class="string">"msg"</span>, <span class="string">"add"</span>);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@RequiresPermissions</span>(value= &#123;<span class="string">"user:update"</span>&#125;)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"update"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		map.put(<span class="string">"msg"</span>, <span class="string">"update"</span>);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@RequiresPermissions</span>(value= &#123;<span class="string">"user:delete"</span>&#125;)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"delete"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		map.put(<span class="string">"msg"</span>, <span class="string">"delete"</span>);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@RequiresPermissions</span>(value= &#123;<span class="string">"user:export"</span>&#125;)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"export"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">export</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		map.put(<span class="string">"msg"</span>, <span class="string">"export"</span>);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建ShiroLoginFilter"><a href="#创建ShiroLoginFilter" class="headerlink" title="创建ShiroLoginFilter"></a>创建ShiroLoginFilter</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.filter;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-02-01 11:28</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.web.filter.authc.FormAuthenticationFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroLoginFilter</span> <span class="keyword">extends</span> <span class="title">FormAuthenticationFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onAccessDenied</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        HttpServletResponse httpServletResponse = (HttpServletResponse) response;</span><br><span class="line">        <span class="comment">//if (isAjax(request)) &#123;</span></span><br><span class="line">        httpServletResponse.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">        httpServletResponse.setContentType(<span class="string">"application/json"</span>);</span><br><span class="line">        Map&lt;String, Object&gt; resultData = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        resultData.put(<span class="string">"code"</span>, -<span class="number">1</span>);</span><br><span class="line">        resultData.put(<span class="string">"msg"</span>, <span class="string">"未登录!"</span>);</span><br><span class="line">        httpServletResponse.getWriter().write(JSONObject.toJSON(resultData).toString());</span><br><span class="line">   <span class="comment">/* &#125; else &#123;</span></span><br><span class="line"><span class="comment">         // saveRequestAndRedirectToLogin(request, response);</span></span><br><span class="line"><span class="comment">         */</span><span class="comment">/**</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@Mark</span> 非ajax请求重定向为登录页面</span></span><br><span class="line"><span class="comment">         */</span><span class="comment">/*</span></span><br><span class="line"><span class="comment">         httpServletResponse.sendRedirect("/login.jsp");</span></span><br><span class="line"><span class="comment">      &#125;*/</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isAjax</span><span class="params">(ServletRequest request)</span> </span>&#123;</span><br><span class="line">        String header = ((HttpServletRequest) request).getHeader(<span class="string">"X-Requested-With"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"XMLHttpRequest"</span>.equalsIgnoreCase(header)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Boolean.TRUE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Boolean.FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改pom-xml引入fastjson"><a href="#修改pom-xml引入fastjson" class="headerlink" title="修改pom.xml引入fastjson"></a>修改pom.xml引入fastjson</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fastjson.version</span>&gt;</span>1.2.60<span class="tag">&lt;/<span class="name">fastjson.version</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/fastjson --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;fastjson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建ShiroProperties"><a href="#创建ShiroProperties" class="headerlink" title="创建ShiroProperties"></a>创建ShiroProperties</h2><p>该项目有引入lombok插件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-19 20:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(value = <span class="string">"shiro"</span>)</span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroProperties</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String hashAlgorithmName = <span class="string">"md5"</span>;</span><br><span class="line">    <span class="keyword">private</span> Integer hashIterations = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">private</span> String loginUrl;</span><br><span class="line">    <span class="keyword">private</span> String unauthorizedUrl;</span><br><span class="line">    <span class="keyword">private</span> String[] anonUrls;</span><br><span class="line">    <span class="keyword">private</span> String logoutUrl;</span><br><span class="line">    <span class="keyword">private</span> String[] authUrls;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1$ ls -A
 
 
+以列表模式显示
 
-<h2 id="创建ShiroAutoConfiguration"><a href="#创建ShiroAutoConfiguration" class="headerlink" title="创建ShiroAutoConfiguration"></a>创建ShiroAutoConfiguration</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> at.pollux.thymeleaf.shiro.dialect.ShiroDialect;</span><br><span class="line"><span class="keyword">import</span> com.example.filter.ShiroLoginFilter;</span><br><span class="line"><span class="keyword">import</span> com.example.realm.UserRealm;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.credential.CredentialsMatcher;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.credential.HashedCredentialsMatcher;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.mgt.SecurityManager;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.spring.web.ShiroFilterFactoryBean;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.web.mgt.DefaultWebSecurityManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.filter.DelegatingFilterProxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.Filter;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-19 20:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties</span>(ShiroProperties<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">ShiroAutoConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShiroProperties shiroProperties;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建凭证匹配器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HashedCredentialsMatcher <span class="title">credentialsMatcher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        HashedCredentialsMatcher credentialsMatcher = <span class="keyword">new</span> HashedCredentialsMatcher();</span><br><span class="line">        credentialsMatcher.setHashAlgorithmName(shiroProperties.getHashAlgorithmName());</span><br><span class="line">        credentialsMatcher.setHashIterations(shiroProperties.getHashIterations());</span><br><span class="line">        <span class="keyword">return</span> credentialsMatcher;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建realm</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserRealm <span class="title">userRealm</span><span class="params">(CredentialsMatcher credentialsMatcher)</span> </span>&#123;</span><br><span class="line">        UserRealm userRealm = <span class="keyword">new</span> UserRealm();</span><br><span class="line">        <span class="comment">//注入凭证匹配器</span></span><br><span class="line">        userRealm.setCredentialsMatcher(credentialsMatcher);</span><br><span class="line">        <span class="keyword">return</span> userRealm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 声明安全管理器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"securityManager"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(UserRealm userRealm)</span> </span>&#123;</span><br><span class="line">        DefaultWebSecurityManager securityManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">        securityManager.setRealm(userRealm);</span><br><span class="line">        <span class="keyword">return</span> securityManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置过滤器 Shiro 的Web过滤器 id必须和web.xml里面的shiroFilter的 targetBeanName的值一样</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"shiroFilter"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title">shiroFilterFactoryBean</span><span class="params">(SecurityManager securityManager)</span> </span>&#123;</span><br><span class="line">        ShiroFilterFactoryBean bean = <span class="keyword">new</span> ShiroFilterFactoryBean();</span><br><span class="line">        <span class="comment">//注入安全管理器</span></span><br><span class="line">        bean.setSecurityManager(securityManager);</span><br><span class="line">        <span class="comment">//注入登陆页面</span></span><br><span class="line">        bean.setLoginUrl(shiroProperties.getLoginUrl());</span><br><span class="line">        <span class="comment">//注入未授权的页面地址</span></span><br><span class="line">        bean.setUnauthorizedUrl(shiroProperties.getUnauthorizedUrl());</span><br><span class="line">        <span class="comment">//注入过滤器</span></span><br><span class="line">        Map&lt;String, String&gt; filterChainDefinition = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//注入放行地址</span></span><br><span class="line">        <span class="keyword">if</span> (shiroProperties.getAnonUrls() != <span class="keyword">null</span> &amp;&amp; shiroProperties.getAnonUrls().length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            String[] anonUrls = shiroProperties.getAnonUrls();</span><br><span class="line">            <span class="keyword">for</span> (String anonUrl : anonUrls) &#123;</span><br><span class="line">                filterChainDefinition.put(anonUrl, <span class="string">"anon"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//注入登出的地址</span></span><br><span class="line">        <span class="keyword">if</span> (shiroProperties.getLogoutUrl() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            filterChainDefinition.put(shiroProperties.getLogoutUrl(), <span class="string">"logout"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//注拦截的地址</span></span><br><span class="line">        String[] authcUrls = shiroProperties.getAuthUrls();</span><br><span class="line">        <span class="keyword">if</span> (authcUrls != <span class="keyword">null</span> &amp;&amp; authcUrls.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String authcUrl : authcUrls) &#123;</span><br><span class="line">                filterChainDefinition.put(authcUrl, <span class="string">"authc"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bean.setFilterChainDefinitionMap(filterChainDefinition);</span><br><span class="line">        <span class="comment">//创建自定义filter</span></span><br><span class="line">        ShiroLoginFilter filter = <span class="keyword">new</span> ShiroLoginFilter();</span><br><span class="line">        Map&lt;String, Filter&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"authc"</span>, filter);</span><br><span class="line">        bean.setFilters(map);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册过滤器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean&lt;DelegatingFilterProxy&gt; <span class="title">filterRegistrationBeanDelegatingFilterProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        FilterRegistrationBean&lt;DelegatingFilterProxy&gt; bean = <span class="keyword">new</span> FilterRegistrationBean&lt;&gt;();</span><br><span class="line">        <span class="comment">//创建过滤器</span></span><br><span class="line">        DelegatingFilterProxy proxy = <span class="keyword">new</span> DelegatingFilterProxy();</span><br><span class="line">        bean.setFilter(proxy);</span><br><span class="line">        bean.addInitParameter(<span class="string">"targetFilterLifecycle"</span>, <span class="string">"true"</span>);</span><br><span class="line">        bean.addInitParameter(<span class="string">"targetBeanName"</span>, <span class="string">"shiroFilter"</span>);</span><br><span class="line"><span class="comment">//        bean.addUrlPatterns();</span></span><br><span class="line">        List&lt;String&gt; servletNames = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        servletNames.add(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME);</span><br><span class="line">        bean.setServletNames(servletNames);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这里是为了能在html页面引用shiro标签，上面两个函数必须添加，不然会报错</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"shiroDialect"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ShiroDialect <span class="title">shiroDialect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ShiroDialect();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*加入注解的使用，不加入这个注解不生效--开始*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> securityManager</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AuthorizationAttributeSourceAdvisor <span class="title">authorizationAttributeSourceAdvisor</span><span class="params">(SecurityManager securityManager)</span> </span>&#123;</span><br><span class="line">        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor =</span><br><span class="line">                <span class="keyword">new</span> AuthorizationAttributeSourceAdvisor();</span><br><span class="line">        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);</span><br><span class="line">        <span class="keyword">return</span> authorizationAttributeSourceAdvisor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DefaultAdvisorAutoProxyCreator <span class="title">getDefaultAdvisorAutoProxyCreator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = <span class="keyword">new</span> DefaultAdvisorAutoProxyCreator();</span><br><span class="line">        advisorAutoProxyCreator.setProxyTargetClass(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> advisorAutoProxyCreator;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*加入注解的使用，不加入这个注解不生效--结束*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1$ ls -Al
 
-<h2 id="启动项目测试"><a href="#启动项目测试" class="headerlink" title="启动项目测试"></a>启动项目测试</h2><p>项目启动后，在浏览器中输入</p>
-<p><a href="http://localhost:8080/login/login?username=zhangsan&amp;password=123" target="_blank" rel="noopener">http://localhost:8080/login/login?username=zhangsan&amp;password=123</a></p>
-<p>会得到返回错误的json</p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5CSnipaste_2020-02-01_12-03-44.png" alt="Snipaste_2020-02-01_12-03-44"></p>
-<p>访问查询用户</p>
-<p><a href="http://localhost:8080/user/query" target="_blank" rel="noopener">http://localhost:8080/user/query</a></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cimage-20200201123122104.png" alt="image-20200201123122104"></p>
-<p>访问正确的用户</p>
-<p><a href="http://localhost:8080/login/login?username=zhangsan&amp;password=123456" target="_blank" rel="noopener">http://localhost:8080/login/login?username=zhangsan&amp;password=123456</a></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cimage-20200201123322723.png" alt="image-20200201123322723"></p>
-<p>重新访问<a href="http://localhost:8080/user/query" target="_blank" rel="noopener">http://localhost:8080/user/query</a></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cimage-20200201123901961.png" alt="image-20200201123901961"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cimage-20200201124018987.png" alt="image-20200201124018987"></p>
+查看某一个目录的完整属性，而不是显示目录里面的文件属性：
+1$ ls -dl &lt;目录名&gt;
 
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+
+显示所有文件大小，并以普通人类能看懂的方式呈现：
+
+1$ ls -AsSh
+
+3.2 变更文件所有者12345# 注意当前的用户必须是 lilei# 如果是 shiyanlou 用户需要切换到 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/Spring%20Boot%20%E6%95%B4%E5%90%88shiro%E6%A8%A1%E6%8B%9F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" title="Spring Boot 整合shiro模拟前后端分离">Spring Boot 整合shiro模拟前后端分离</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:55"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">Spring Boot整合shiro模拟前后端分离加入全局异常监控12345678910111213141516171819202122232425package com.example.aspect;import org.apache.shiro.authz.UnauthorizedException;import org.springframework.web.bind.annotation.ExceptionHandler;import org.springframework.web.bind.annotation.RestControllerAdvice;import java.util.HashMap;import java.util.Map;/** * @author Kahen * @create 2020-02-01 11:13 */@RestControllerAdvice //以json串的形式返回出去public class AppExceptionAdivse &#123;    @ExceptionHandler(value= &#123;Unauthoriz ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/%E5%AE%9E%E9%AA%8C11%20%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" title="实验11 简单的文本处理">实验11 简单的文本处理</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:54"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">实验11 简单的文本处理2.1 tr命令tr 命令可以用来删除一段文本信息中的某些文字。或者将其进行转换。-d 去除匹配字段-s 去除匹配的重复字段[text]  | tr ‘[a-z]’ ‘[A-Z]’:转换大小写
+2.2 col命令123选项	说明-x	将Tab转换为空格-h	将空格转换为Tab（默认选项）
+
+2.3 jion命令12345选项	说明-t	指定分隔符，默认为空格-i	忽略大小写的差异-1	指明第一个文件要用哪个字段来对比，默认对比第一个字段-2	指明第二个文件要用哪个字段来对比，默认对比第一个字段
+
+2.4 paste命令123选项	说明 -d	指定合并的分隔符，默认为Tab -s	不合并到一行，每个文件为一行
+
+四 作业1echo &#39;Hello\r\nLowoL&#39; &gt;file1 | cat -A file1 | tr -d &#39;^M&#39;
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/%E5%AE%9E%E9%AA%8C9%20Linux%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92crontab/" title="实验9 Linux任务计划crontab">实验9 Linux任务计划crontab</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:53"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">实验9 Linux任务计划crontabcrontab格式12345678# Example of job definition:# .---------------- minute (0 - 59)# |  .------------- hour (0 - 23)# |  |  .---------- day of month (1 - 31)# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...# |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat# |  |  |  |  |# *  *  *  *  * user-name command to be executed
+crontab准备
+crontab使用输入
+1crontab -e
+选择vim后得到画面在行尾输入
+1*&#x2F;1 * * * * touch &#x2F;home&#x2F;shiyanlou&#x2F;$(date +\ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/%E8%A7%A3%E5%86%B3IntelliJ%20IDEA%20%E5%88%9B%E5%BB%BAMaven%E9%A1%B9%E7%9B%AE%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98%20DarchetypeCatalog/" title="解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog">解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:53"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog原因
+IDEA根据maven archetype的本质，其实是执行mvn archetype:generate命令，该命令执行时，需要指定一个archetype-catalog.xml文件。
+该命令的参数-DarchetypeCatalog，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。
+默认为remote，即从 http://repo1.maven.org/maven2/archetype-catalog.xml路径下载archetype-catalog.xml文件。
+http://repo1.maven.org/maven2/archetype-catalog.xml 文件约为3-4M，下载速度很慢，导致创建过程卡住。
+解决方法
+1.在下面界面添加一个属性,archetypeCatalog = internal
 
 
 
+方法二在maven的VM Options加上-DarchetypeCatalog=inter ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/springboot%E6%95%B4%E5%90%88Swagger/" title="springboot整合Swagger">springboot整合Swagger</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:52"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">在团队开发中，一个好的 API 文档不但可以减少大量的沟通成本，还可以帮助一位新人快速上手业务。传统的做法是由开发人员创建一份 RESTful API 文档来记录所有的接口细节，并在程序员之间代代相传。
+这种做法存在以下几个问题：
+
+API 接口众多，细节复杂，需要考虑不同的HTTP请求类型、HTTP头部信息、HTTP请求内容等，想要高质量的完成这份文档需要耗费大量的精力；
+难以维护。随着需求的变更和项目的优化、推进，接口的细节在不断地演变，接口描述文档也需要同步修订，可是文档和代码处于两个不同的媒介，除非有严格的管理机制，否则很容易出现文档、接口不一致的情况
+
+Swagger2 的出现就是为了从根本上解决上述问题。它作为一个规范和完整的框架，可以用于生成、描述、调用和可视化 RESTful 风格的 Web 服务：
+
+接口文档在线自动生成，文档随接口变动实时更新，节省维护成本
+支持在线接口测试，不依赖第三方工具
+
+1.创建项目（1）已idea为例，创建项目所需要的dependencies
+(2) 引入pom.xml依赖12345678910&lt;dependency&gt;    & ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/05/19/%E5%AE%9E%E9%AA%8C%E4%BA%94%20%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE/" title="实验五 环境变量与文件查找">实验五 环境变量与文件查找</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-05-19 11:00:52"><i class="far fa-calendar-alt"></i>2020-05-19</time></div><div class="content">实验五 环境变量与文件查找二、环境变量declare 创建变量名为tmp的变量
+
+echo 和$命令读取变量的值
+
+1.环境变量
 
 
-  <article class="post">
+对当前用户永久生效的.profile
+
+2. 命令的查找路径与顺序1$ echo $PATH
+
+
+
+
+
+
+3. 添加自定义路径到“ PATH ”环境变量
+4.修改和删除已有变量
+5.如何让环境变量立即生效
+三、搜索文件whereis 简单快速​                 
+locate 快而全123456789$ sudo updatedb$ sudo apt-get update$ sudo apt-get install locate$ sudo updatedb$ locate /etc/sh
+
+
+
+which 小而精
+find 精而细  
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:54.210Z"><a href="/2020/05/19/实验11 简单的文本处理/">2020-05-19</a></time>
-      
-      
   
-    <h1 class="title"><a href="/2020/05/19/实验11 简单的文本处理/">实验11 简单的文本处理</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="实验11-简单的文本处理"><a href="#实验11-简单的文本处理" class="headerlink" title="实验11 简单的文本处理"></a>实验11 简单的文本处理</h1><h2 id="2-1-tr命令"><a href="#2-1-tr命令" class="headerlink" title="2.1 tr命令"></a>2.1 tr命令</h2><pre><code>tr 命令可以用来删除一段文本信息中的某些文字。或者将其进行转换。</code></pre><p>-d 去除匹配字段<br>-s 去除匹配的重复字段<br>[text]  | tr ‘[a-z]’ ‘[A-Z]’:转换大小写<br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588731627040" alt="image.png"></p>
-<h2 id="2-2-col命令"><a href="#2-2-col命令" class="headerlink" title="2.2 col命令"></a>2.2 col命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-x	将Tab转换为空格</span><br><span class="line">-h	将空格转换为Tab（默认选项）</span><br></pre></td></tr></table></figure>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588732030424" alt="image.png"></p>
-<h2 id="2-3-jion命令"><a href="#2-3-jion命令" class="headerlink" title="2.3 jion命令"></a>2.3 jion命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-t	指定分隔符，默认为空格</span><br><span class="line">-i	忽略大小写的差异</span><br><span class="line">-1	指明第一个文件要用哪个字段来对比，默认对比第一个字段</span><br><span class="line">-2	指明第二个文件要用哪个字段来对比，默认对比第一个字段</span><br></pre></td></tr></table></figure>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588732253691" alt="image.png"><br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588732313226" alt="image.png"></p>
-<h2 id="2-4-paste命令"><a href="#2-4-paste命令" class="headerlink" title="2.4 paste命令"></a>2.4 paste命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line"> -d	指定合并的分隔符，默认为Tab</span><br><span class="line"> -s	不合并到一行，每个文件为一行</span><br></pre></td></tr></table></figure>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588733409463" alt="image.png"></p>
-<h2 id="四-作业"><a href="#四-作业" class="headerlink" title="四 作业"></a>四 作业</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;Hello\r\nLowoL&#39; &gt;file1 | cat -A file1 | tr -d &#39;^M&#39;</span><br></pre></td></tr></table></figure>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200506-1588733970129" alt="image.png"></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:53.729Z"><a href="/2020/05/19/实验9 Linux任务计划crontab/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/实验9 Linux任务计划crontab/">实验9 Linux任务计划crontab</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="实验9-Linux任务计划crontab"><a href="#实验9-Linux任务计划crontab" class="headerlink" title="实验9 Linux任务计划crontab"></a>实验9 Linux任务计划crontab</h1><h2 id="crontab格式"><a href="#crontab格式" class="headerlink" title="crontab格式"></a>crontab格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br></pre></td></tr></table></figure>
-<h2 id="crontab准备"><a href="#crontab准备" class="headerlink" title="crontab准备"></a>crontab准备</h2><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587524411298" alt="image.png"><br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587524440551" alt="image.png"></p>
-<h2 id="crontab使用"><a href="#crontab使用" class="headerlink" title="crontab使用"></a>crontab使用</h2><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
-<p>选择vim后得到画面<br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587524629207" alt="image.png"><br>在行尾输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;1 * * * * touch &#x2F;home&#x2F;shiyanlou&#x2F;$(date +\%Y\%m\%d\%H\%M\%S)</span><br></pre></td></tr></table></figure>
-<p>按esc后：wq保存退出<br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587524936152" alt="image.png"><br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587525032037" alt="image.png"><br>创建任务，检查<br><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587525175878" alt="image.png"><br>删除任务</p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5Cuid1263882-20200422-1587525254511" alt="image.png"></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:53.681Z"><a href="/2020/05/19/解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog/">解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="解决IntelliJ-IDEA-创建Maven项目速度慢问题-DarchetypeCatalog"><a href="#解决IntelliJ-IDEA-创建Maven项目速度慢问题-DarchetypeCatalog" class="headerlink" title="解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog"></a><a href="https://www.cnblogs.com/del88/p/6286887.html" target="_blank" rel="noopener">解决IntelliJ IDEA 创建Maven项目速度慢问题 DarchetypeCatalog</a></h1><p><strong>原因</strong></p>
-<p>IDEA根据maven archetype的本质，其实是执行mvn archetype:generate命令，该命令执行时，需要指定一个archetype-catalog.xml文件。</p>
-<p>该命令的参数-DarchetypeCatalog，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。</p>
-<p>默认为remote，即从 <a href="http://repo1.maven.org/maven2/archetype-catalog.xml路径下载archetype-catalog.xml文件。" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml路径下载archetype-catalog.xml文件。</a></p>
-<p><a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 文件约为3-4M，下载速度很慢，导致创建过程卡住。</p>
-<p><strong>解决方法</strong></p>
-<p><strong>1.在下面界面添加一个属性,archetypeCatalog = internal</strong></p>
-<p><strong><img src="E:LegendMarkDownimages%5C307031-20170115115106431-1851712219.png" alt="img"></strong></p>
-<p><img src="E:LegendMarkDownimages%5C307031-20170115115213853-748339996.png" alt="img"></p>
-<p><img src="E:LegendMarkDownimages%5C307031-20170115115352572-918503967.png" alt="img"></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a><strong>方法二</strong></h3><p><strong>在maven的VM Options加上-DarchetypeCatalog=internal参数，如下：</strong> </p>
-<p><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115115956072-465857853.png" alt="img"></p>
-<p><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115120211916-1689038128.png" alt="img"></p>
-<p><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115120502166-633531341.png" alt="img"></p>
-<p> <strong>方法3: 用local （推荐这种方法 完美）</strong></p>
-<p>1.由于默认情况下，根据archetype创建maven项目会从网络下载catalog文件，导致创建maven项目缓慢</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Searching for remote catalog: http:&#x2F;&#x2F;repo1.maven.org&#x2F;maven2&#x2F;archetype-catalog.xml</span><br></pre></td></tr></table></figure>
-
-<p>2.解决办法可以设置使用本地catalog文件，在IDEA中设置archetype的使用方式为local;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DarchetypeCatalog&#x3D;local</span><br></pre></td></tr></table></figure>
-
-
-
-<p>直接先把 文件用搜狗浏览器或其它下载工具下载下来。</p>
-<p><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115120817213-2096622919.png" alt="img"></p>
-<p> <img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115120850135-1363237568.png" alt="img"></p>
-<p><strong>下载后放到哪里呢，这里与本地仓库的位置有关，假如本地仓库是maven默认的，并没有修改 那么就需要放到 C:\Users\del-berlin.m2\repository\org\apache\maven\archetype\archetype-catalog\2.4\下  ，本地仓库的默认位置：Default: ${user.home}/.m2/repository</strong></p>
-<p><strong><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115161733010-1313060140.png" alt="img"></strong></p>
-<p><strong><img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115161545885-893467286.png" alt="img"></strong></p>
-<p> <img src="https://images2015.cnblogs.com/blog/307031/201701/307031-20170115162029603-671350799.png" alt="img"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5C307031-20170115121200806-1158239536.png" alt="img"></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:52.841Z"><a href="/2020/05/19/springboot整合Swagger/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/springboot整合Swagger/">springboot整合Swagger</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>在团队开发中，一个好的 API 文档不但可以减少大量的沟通成本，还可以帮助一位新人快速上手业务。传统的做法是由开发人员创建一份 RESTful API 文档来记录所有的接口细节，并在程序员之间代代相传。</p>
-<p>这种做法存在以下几个问题：</p>
-<ul>
-<li>API 接口众多，细节复杂，需要考虑不同的HTTP请求类型、HTTP头部信息、HTTP请求内容等，想要高质量的完成这份文档需要耗费大量的精力；</li>
-<li>难以维护。随着需求的变更和项目的优化、推进，接口的细节在不断地演变，接口描述文档也需要同步修订，可是文档和代码处于两个不同的媒介，除非有严格的管理机制，否则很容易出现文档、接口不一致的情况</li>
-</ul>
-<p><strong>Swagger2</strong> 的出现就是为了从根本上解决上述问题。它作为一个规范和完整的框架，可以用于生成、描述、调用和可视化 RESTful 风格的 Web 服务：</p>
-<ol>
-<li>接口文档在线自动生成，文档随接口变动实时更新，节省维护成本</li>
-<li>支持在线接口测试，不依赖第三方工具</li>
-</ol>
-<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h2><h3 id="（1）已idea为例，创建项目所需要的dependencies"><a href="#（1）已idea为例，创建项目所需要的dependencies" class="headerlink" title="（1）已idea为例，创建项目所需要的dependencies"></a>（1）已idea为例，创建项目所需要的dependencies</h3><p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117112949301.png" alt="image-20200117112949301"></p>
-<h3 id="2-引入pom-xml依赖"><a href="#2-引入pom-xml依赖" class="headerlink" title="(2) 引入pom.xml依赖"></a>(2) 引入pom.xml依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-创建Swagger2-配置类"><a href="#3-创建Swagger2-配置类" class="headerlink" title="(3) 创建Swagger2 配置类"></a>(3) 创建Swagger2 配置类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springbootswagger2.config;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.Contact;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-14 21:17</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2 <span class="comment">//启用Swagger2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2AutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">swaggerSpringMvcPlugin</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()</span><br><span class="line">                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation<span class="class">.<span class="keyword">class</span>))</span></span><br><span class="line"><span class="class">                // .<span class="title">apis</span>(<span class="title">RequestHandlerSelectors</span>.<span class="title">withClassAnnotation</span>(<span class="title">Api</span>.<span class="title">class</span>))  扫描类上的<span class="title">Api</span>注解也可以@<span class="title">RestController</span></span></span><br><span class="line">                // .apis(RequestHandlerSelectors.basePackage("com.example.springbootswagger2.controller"))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder().description(<span class="string">"这是一个很NB的Api工具"</span>)</span><br><span class="line">                <span class="comment">/*名片*/</span></span><br><span class="line">                .contact(<span class="keyword">new</span> Contact(<span class="string">"Kahen"</span>, <span class="string">"http://www.Kahen.com"</span>, <span class="string">"2020@example.cn"</span>))</span><br><span class="line">                <span class="comment">/*版本*/</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                <span class="comment">/*所有者*/</span></span><br><span class="line">                .license(<span class="string">"kahen"</span>)</span><br><span class="line">                <span class="comment">//构造</span></span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Swagger2Configuration.java</strong> 配置类的内容不多，配置完成后也很少变化，简单了解即可。</p>
-<p>如上代码所示，通过 <code>@Configuration</code> 注解，让 Spring 加载该配置类。再通过 <code>@EnableSwagger2</code> 注解来启用Swagger2。成员方法 <code>createRestApi</code> 函数创建 <code>Docket</code> 的Bean之后，<code>apiInfo()</code> 用来创建该 <code>Api</code> 的基本信息（这些基本信息会展现在文档页面中）。<code>select()</code> 函数返回一个 <code>ApiSelectorBuilder</code>实例用来控制哪些接口暴露给 Swagger 来展现，本例采用指定扫描的<code>ApiOperation</code>； 还有一种指定扫描类上的<code>Api</code>注解也可以<code>@RestController</code>，还有一种是指定扫描的包路径来定义，Swagger 会扫描该包下所有 Controller 定义的 API，并产生文档内容（除了被 <code>@ApiIgnore</code> 指定的请求）。</p>
-<h3 id="（4）本例需要模拟数据，创建一个ResultObj类"><a href="#（4）本例需要模拟数据，创建一个ResultObj类" class="headerlink" title="（4）本例需要模拟数据，创建一个ResultObj类"></a>（4）本例需要模拟数据，创建一个<code>ResultObj</code>类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springbootswagger2.common;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-14 19:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResultObj</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer status;  <span class="comment">//返回状态</span></span><br><span class="line">    <span class="keyword">private</span> Object msg;    <span class="comment">//返回消息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="（5）创建User类"><a href="#（5）创建User类" class="headerlink" title="（5）创建User类"></a>（5）创建User类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springbootswagger2.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonFormat;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.format.annotation.DateTimeFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-14 18:40</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer userId;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="meta">@DateTimeFormat</span>(pattern = <span class="string">"yyyy-MM-dd"</span>)</span><br><span class="line">    <span class="meta">@JsonFormat</span>(pattern = <span class="string">"yyyy-MM-dd"</span>,timezone = <span class="string">"GMT+8"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date birth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-创建-UserControlller"><a href="#6-创建-UserControlller" class="headerlink" title="(6) 创建 UserControlller"></a>(6) 创建 UserControlller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springbootswagger2.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springbootswagger2.common.ResultObj;</span><br><span class="line"><span class="keyword">import</span> com.example.springbootswagger2.domain.User;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.Api;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiImplicitParam;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiImplicitParams;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-14 21:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="meta">@Api</span>(value = <span class="string">"A"</span>, consumes = <span class="string">"用户管理"</span>, produces = <span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 全查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"用户查询"</span>, consumes = <span class="string">"查询所有用户"</span>)</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"queryAllUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">queryAllUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> User(<span class="number">1</span>, <span class="string">"小明"</span> + i, <span class="string">"地球"</span> + i, <span class="keyword">new</span> Date()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先用全查询测试</p>
-<h3 id="（7）启动项目"><a href="#（7）启动项目" class="headerlink" title="（7）启动项目"></a>（7）启动项目</h3><p>查找Swagger的主页，在包的Resources的html文件名就对了</p>
-<p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117122639524.png" alt="image-20200117122639524"></p>
-<p>访问<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></p>
-<p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117123213451.png" alt="image-20200117123213451"></p>
-<p>对应自己的Usercontroller，按try it out 进去调试，其余自行试探</p>
-<p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117123632718.png" alt="image-20200117123632718"></p>
-<h3 id="（8）调试时验证"><a href="#（8）调试时验证" class="headerlink" title="（8）调试时验证"></a>（8）调试时验证</h3><p>这里我介绍几个注解：</p>
-<p>​        1、@RequestParam ：加了@RequestParam后解决调试时验证问题</p>
-<p>​        2、@RestquestBody ：要求验证前端所有数非空同时要求必须提交json格式数据</p>
-<p>​        3、@ApiImplicitParam：用在@ApiImplicitParams注解中，指定一个请求参数的各个方面</p>
-<p>​                         name：参数名 </p>
-<p>​                        value：参数的汉字说明、解释 required：参数是否必须传 </p>
-<p>​                        paramType：参数放在哪个地方</p>
-<p>​                         · header –&gt; 请求参数的获取：@RequestHeader </p>
-<p>​                         · query –&gt; 请求参数的获取：@RequestParam </p>
-<p>​                         · path（用于restful接口）–&gt; 请求参数的获取：@PathVariable</p>
-<p>​                         · body（不常用） · form（不常用） </p>
-<p>​                        dataType：参数类型，默认String，其它值dataType=”Integer” </p>
-<p>​                        defaultValue：参数的默认值</p>
-<p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117124851887.png" alt="image-20200117124851887"></p>
-<p>展示其中一个，下面给出完整代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springbootswagger2.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.springbootswagger2.common.ResultObj;</span><br><span class="line"><span class="keyword">import</span> com.example.springbootswagger2.domain.User;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.Api;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiImplicitParam;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiImplicitParams;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kahen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2020-01-14 21:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="meta">@Api</span>(value = <span class="string">"A"</span>, consumes = <span class="string">"用户管理"</span>, produces = <span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 全查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"用户查询"</span>, consumes = <span class="string">"查询所有用户"</span>)</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"queryAllUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">queryAllUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> User(<span class="number">1</span>, <span class="string">"小明"</span> + i, <span class="string">"地球"</span> + i, <span class="keyword">new</span> Date()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id查询用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"根据id查询用户"</span>,consumes = <span class="string">"根据id查询用户"</span>)</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"queryUserById"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">queryUserByid</span><span class="params">(@RequestParam(<span class="string">"UserId"</span>)</span> Integer id) </span>&#123;<span class="comment">//加了@RequestParam后解决调试时验证问题</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(id, <span class="string">"小明"</span>, <span class="string">"广东"</span>, <span class="keyword">new</span> Date());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *添加一个用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"addUser"</span>)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"添加用户"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParams</span>(</span><br><span class="line">            value = &#123;</span><br><span class="line">                    <span class="meta">@ApiImplicitParam</span>(name=<span class="string">"userId"</span>,value = <span class="string">"用户标识"</span>,required = <span class="keyword">true</span>,paramType = <span class="string">"Integer"</span>,dataType = <span class="string">"Integer"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// public ResultObj addUser(@RestquestBody User user)&#123;//要求验证前端所有数非空同时要求必须提交json格式数据</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ResultObj <span class="title">addUser</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultObj(<span class="number">200</span>,<span class="string">"添加成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *修改一个用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"updateUser"</span>)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"修改用户"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParams</span>(</span><br><span class="line">            value = &#123;</span><br><span class="line">                    <span class="meta">@ApiImplicitParam</span>(name=<span class="string">"userId"</span>,value = <span class="string">"用户标识"</span>,required = <span class="keyword">true</span>,paramType = <span class="string">"Integer"</span>,dataType = <span class="string">"Integer"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// public ResultObj addUser(@RestquestBody User user)&#123;//要求验证前端所有数非空同时要求必须提交json格式数据</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultObj <span class="title">updateUser</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultObj(<span class="number">200</span>,<span class="string">"修改成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id删除用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"deleteUser"</span>)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"删除用户"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultObj <span class="title">deleteUser</span><span class="params">(@RequestParam(<span class="string">"userId"</span>)</span> Integer id)</span>&#123;</span><br><span class="line">        System.out.println(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultObj(<span class="number">200</span>,<span class="string">"删除成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="9-更换皮肤"><a href="#9-更换皮肤" class="headerlink" title="(9)更换皮肤"></a>(9)更换皮肤</h3><p>使用方法，把原来的swagger-ui 注释了换上bootstrap-ui，启动项目</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        &lt;dependency&gt;</span></span><br><span class="line"><span class="comment">            &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">            &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">            &lt;version&gt;2.9.2&lt;/version&gt;</span></span><br><span class="line"><span class="comment">        &lt;/dependency&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaoymin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-bootstrap-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>按照原来的方法寻找主页</p>
-<p>访问<a href="http://localhost:8080/doc.html，得到主页" target="_blank" rel="noopener">http://localhost:8080/doc.html，得到主页</a></p>
-<p><img src="C:%5CUsers%5Ckahen%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200117125431961.png" alt="image-20200117125431961"></p>
-<p><em>由于本人实力有限，许多东西不够完美，欢迎大家沟通交流</em></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-05-19T03:00:52.490Z"><a href="/2020/05/19/实验五 环境变量与文件查找/">2020-05-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/05/19/实验五 环境变量与文件查找/">实验五 环境变量与文件查找</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="实验五-环境变量与文件查找"><a href="#实验五-环境变量与文件查找" class="headerlink" title="实验五 环境变量与文件查找"></a>实验五 环境变量与文件查找</h1><h2 id="二、环境变量"><a href="#二、环境变量" class="headerlink" title="二、环境变量"></a>二、环境变量</h2><p>declare 创建变量名为tmp的变量</p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585708999166.png" alt="1585708999166"></p>
-<p>echo 和$命令读取变量的值</p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709018634.png" alt="1585709018634"></p>
-<h3 id="1-环境变量"><a href="#1-环境变量" class="headerlink" title="1.环境变量"></a>1.环境变量</h3><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709458672.png" alt="1585709458672"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709491997.png" alt="1585709491997"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709504915.png" alt="1585709504915"></p>
-<p>对当前用户永久生效的.profile</p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709726846.png" alt="1585709726846"></p>
-<h3 id="2-命令的查找路径与顺序"><a href="#2-命令的查找路径与顺序" class="headerlink" title="2. 命令的查找路径与顺序"></a>2. 命令的查找路径与顺序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585710250944.png" alt="1585710250944"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585709967471.png" alt="1585709967471"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585710148590.png" alt="1585710148590"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585710364844.png" alt="1585710364844"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585710502828.png" alt="1585710502828"></p>
-<h3 id="3-添加自定义路径到“-PATH-”环境变量"><a href="#3-添加自定义路径到“-PATH-”环境变量" class="headerlink" title="3. 添加自定义路径到“ PATH ”环境变量"></a>3. 添加自定义路径到“ PATH ”环境变量</h3><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711044591.png" alt="1585711044591"></p>
-<h3 id="4-修改和删除已有变量"><a href="#4-修改和删除已有变量" class="headerlink" title="4.修改和删除已有变量"></a>4.修改和删除已有变量</h3><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711283469.png" alt="1585711283469"></p>
-<h3 id="5-如何让环境变量立即生效"><a href="#5-如何让环境变量立即生效" class="headerlink" title="5.如何让环境变量立即生效"></a>5.如何让环境变量立即生效</h3><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711464015.png" alt="1585711464015"></p>
-<h2 id="三、搜索文件"><a href="#三、搜索文件" class="headerlink" title="三、搜索文件"></a>三、搜索文件</h2><h4 id="whereis-简单快速"><a href="#whereis-简单快速" class="headerlink" title="whereis 简单快速"></a>whereis 简单快速</h4><p>​         <img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711798514.png" alt="1585711798514">        </p>
-<h4 id="locate-快而全"><a href="#locate-快而全" class="headerlink" title="locate 快而全"></a>locate 快而全</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo updatedb</span><br><span class="line"></span><br><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install locate</span><br><span class="line"></span><br><span class="line">$ sudo updatedb</span><br><span class="line"></span><br><span class="line">$ locate /etc/sh</span><br></pre></td></tr></table></figure>
-
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711807215.png" alt="1585711807215"></p>
-<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711815008.png" alt="1585711815008"></p>
-<h4 id="which-小而精"><a href="#which-小而精" class="headerlink" title="which 小而精"></a>which 小而精</h4><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711822176.png" alt="1585711822176"></p>
-<h4 id="find-精而细"><a href="#find-精而细" class="headerlink" title="find 精而细"></a>find 精而细</h4><p>  <img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711829192.png" alt="1585711829192"></p>
-<p>  <img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711832703.png" alt="1585711832703"></p>
-<p>  <img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585711837183.png" alt="1585711837183"></p>
-<h2 id="四、更多"><a href="#四、更多" class="headerlink" title="四、更多"></a>四、更多</h2><p> <img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585712093028.png" alt="1585712093028"></p>
-<h2 id="五、作业"><a href="#五、作业" class="headerlink" title="五、作业"></a>五、作业</h2><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585712766972.png" alt="1585712766972"></p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585713305646.png" alt=""></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-<nav id="pagination">
-  
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
-  </nav>
-
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:kahen.github.io">
-  </form>
-</div>
-
-  
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
-      </li>
-    
-      <li>
-        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  
-
-  
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2020 Kahen
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-<div id='bg'></div>
-</body>
-</html>
+四、更多 
+五、作业
+挑战
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Kahen</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">Articles</div><div class="length_num">37</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="Bookmark"><i class="fas fa-bookmark"></i><span>Bookmark</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kahen" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kahenlee@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2020/07/03/%E6%89%BE%E5%87%BA%E6%97%8B%E8%BD%AC%E6%9C%89%E5%BA%8F%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%AD%E9%97%B4%E5%80%BC/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%89%BE%E5%87%BA%E6%97%8B%E8%BD%AC%E6%9C%89%E5%BA%8F%E6%95%B0%E5%88%97%E7%9A%84%E4%B8%AD%E9%97%B4%E5%80%BC/" title="找出旋转有序数列的中间值">找出旋转有序数列的中间值</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97/" title="最长连续数列">最长连续数列</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%9E%84%E5%BB%BA%E7%9F%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%9E%84%E5%BB%BA%E7%9F%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="构建短字符串">构建短字符串</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E5%92%8C%E4%B8%BA%E9%9B%B6%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E5%92%8C%E4%B8%BA%E9%9B%B6%E7%9A%84%E4%B8%89%E5%85%83%E7%BB%84/" title="和为零的三元组">和为零的三元组</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/03/%E6%A0%88%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/"><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/03/%E6%A0%88%E5%AE%9E%E7%8E%B0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/" title="栈实现四则运算">栈实现四则运算</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-03 17:06:15">2020-07-03</time></div></a></div></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">23</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">May 2020</span><span class="card-archive-list-count">14</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">Article :</div><div class="webinfo-article-count">37</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">UV :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">PV :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Kahen</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleEffect = true
+if (subtitleEffect) { 
+  var typed = new Typed("#subtitle", {
+    strings: "今日事&#44;今日畢,Never put off till tomorrow what you can do today".split(","),
+    startDelay: 300,
+    typeSpeed: 150,
+    loop: true,
+    backSpeed: 50
+  })
+} else {
+  document.getElementById("subtitle").innerHTML = '今日事&#44;今日畢'
+}</script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script></body></html>
