@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>和为零的三元组 | Kahen的个人技术博客</title>
+  <meta name="author" content="Kahen" />
+
+  
+  <meta name="description" content="序号：#15难度：有挑战时间限制：1000ms内存限制：10M描述给出一个整数数组, 数组中是否存在任意 3 个数 a, b, c 满足 a + b + c = 0? 找出数组中所有满足以上条件的三元组，最后输出这些三元组的个数（包含相同元素的三元组只计算一次）。
+输入一个包含多个整数（正或负）的字" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="和为零的三元组" />
+  <meta property="og:site_name" content="Kahen的个人技术博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Kahen的个人技术博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.812Z"><a href="/2020/07/03/和为零的三元组/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title">和为零的三元组</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>序号：#15<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个整数数组, 数组中是否存在任意 3 个数 a, b, c 满足 a + b + c = 0? 找出数组中所有满足以上条件的三元组，最后输出这些三元组的个数（包含相同元素的三元组只计算一次）。</p>
+<p>输入<br>一个包含多个整数（正或负）的字符串，每个整数之间用逗号（,）分隔，如：-1,0,1,2,-1,-4。</p>
+<p>输出<br>输入满足加和结果正好等于 0 的三元组的个数，如对于 -1,0,1,2,-1,-4 有 [-1, 0, 1] 和 [-1, -1, 2]，所以输出 2</p>
+<p>输入样例</p>
+<pre><code>-1,0,1,2,-1,-4</code></pre><p>输出样例</p>
+<pre><code>2</code></pre><p>希望我的代码能被看懂吧</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// please write your code here</span></span><br><span class="line">		String[] str = line.split(<span class="string">","</span>);</span><br><span class="line">		<span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[str.length];</span><br><span class="line">    <span class="keyword">if</span>(a.length&lt;<span class="number">3</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.valueOf(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">			a[i] = Integer.parseInt(str[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> headFlag=<span class="number">0</span>,endFlag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> fuck=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]!=<span class="number">0</span>) &#123;</span><br><span class="line">				fuck=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(fuck==<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.valueOf(<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; a.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> head = i + <span class="number">1</span>, end = a.length - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> n1=<span class="number">0</span>;<span class="keyword">int</span> n2=<span class="number">0</span>;<span class="keyword">int</span> n3=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (head &lt; end) &#123;</span><br><span class="line">					<span class="keyword">if</span> (a[i] + a[head] + a[end] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">						end--;</span><br><span class="line">						endFlag=<span class="number">1</span>;</span><br><span class="line">						headFlag=<span class="number">0</span>;</span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[i] + a[head] + a[end] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">						head++;</span><br><span class="line">						headFlag=<span class="number">1</span>;</span><br><span class="line">						endFlag=<span class="number">0</span>;</span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (a[i] + a[head] + a[end] == <span class="number">0</span>) &#123;</span><br><span class="line">						<span class="keyword">if</span>(a[i]!=n1||a[head]!=n2||a[end]!=n3) &#123;</span><br><span class="line">						count++;</span><br><span class="line">						n1=a[i];</span><br><span class="line">						n2=a[head];</span><br><span class="line">						n3=a[end];</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(head==i+<span class="number">1</span>) &#123;</span><br><span class="line">							headFlag=<span class="number">1</span>;</span><br><span class="line">							endFlag=<span class="number">0</span>;</span><br><span class="line">							head++;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(end==a.length-<span class="number">1</span>) &#123;</span><br><span class="line">							endFlag=<span class="number">1</span>;</span><br><span class="line">							headFlag=<span class="number">0</span>;</span><br><span class="line">							end--;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(endFlag==<span class="number">1</span>&amp;&amp;head &lt; end--) &#123;</span><br><span class="line">							end--;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span> <span class="keyword">if</span>(headFlag==<span class="number">1</span>&amp;&amp;head++&lt;end) &#123;</span><br><span class="line">							head++;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> String.valueOf(count);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:kahen.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 Kahen
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

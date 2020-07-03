@@ -62,11 +62,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.785Z"><a href="/2020/07/03/小米OJ上分日志——（二）找出单独出现的数字/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.785Z"><a href="/2020/07/03/找出单独出现的数字/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日志——（二）找出单独出现的数字/">小米OJ上分日志——（二）找出单独出现的数字</a></h1>
+    <h1 class="title"><a href="/2020/07/03/找出单独出现的数字/">找出单独出现的数字</a></h1>
   
 
     </header>
@@ -107,56 +107,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.782Z"><a href="/2020/07/03/小米OJ上分日志——（八）最少交换次数/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.782Z"><a href="/2020/07/03/最少交换次数/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日志——（八）最少交换次数/">小米OJ上分日志——（八）最少交换次数</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#8<br>难度：非常难<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个无序数列，每次只能交换相邻两个元素，求将原数列变成递增数列的最少交换次数。 如：数列：2,3,1，交换3和1后变成：2,1,3；交换1和2之后变成：1,2,3。总共交换2次。</p>
-<p>输入</p>
-<pre><code>逗号隔开的正整数数列</code></pre><p>输出</p>
-<pre><code>正整数</code></pre><p>输入样例</p>
-<pre><code>2,3,1</code></pre><p>输出样例</p>
-<pre><code>2</code></pre><p>解析：题目虽然难度最高，但审题发现是冒泡排序的话就会变得简单，不过不排除有其他更好的解法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">	    String[] str=line.split(<span class="string">","</span>);</span><br><span class="line">	    <span class="keyword">int</span> a[]=<span class="keyword">new</span> <span class="keyword">int</span>[str.length];</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++)&#123;</span><br><span class="line">	    	a[i]=Integer.parseInt(str[i]);</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">	    <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;a.length-<span class="number">1</span>-i;j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(a[j]&gt;a[j+<span class="number">1</span>]) &#123;</span><br><span class="line">					temp=a[j];</span><br><span class="line">					a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">					a[j+<span class="number">1</span>]=temp;</span><br><span class="line">					count++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	    <span class="keyword">return</span> String.valueOf(count);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.778Z"><a href="/2020/07/03/小米OJ上分日志——（八）最少交换次数 (1)/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日志——（八）最少交换次数 (1)/">小米OJ上分日志——（八）最少交换次数 (1)</a></h1>
+    <h1 class="title"><a href="/2020/07/03/最少交换次数/">最少交换次数</a></h1>
   
 
     </header>
@@ -197,11 +152,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.774Z"><a href="/2020/07/03/小米OJ上分日志——（119）小米兔跳格子/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.774Z"><a href="/2020/07/03/小米兔跳格子/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日志——（119）小米兔跳格子/">小米OJ上分日志——（119）小米兔跳格子</a></h1>
+    <h1 class="title"><a href="/2020/07/03/小米兔跳格子/">小米兔跳格子</a></h1>
   
 
     </header>
@@ -248,55 +203,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.771Z"><a href="/2020/07/03/小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.771Z"><a href="/2020/07/03/在一个有序的经过旋转的数组里查找一个数/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数/">小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>序号：#14<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>假设一个有序的数组，经过未知次数的旋转（例如0 1 2 4 5 6 7 被旋转成 4 5 6 7 0 1 2），从中查找一个目标值，如果存在，返回其下标，不存在，返回-1。注：假设数组无重复数字</p>
-<p>输入<br>输入一个有序经过旋转的数组和要查找的目标数字，数组中各数字用“逗号”分隔，数组和目标数字用“空格”分隔</p>
-<p>输出<br>一个整数，表示该目标数字的下标（不存在返回-1）</p>
-<p>输入样例</p>
-<pre><code>4,5,6,7,0,1,2 6</code></pre><p>输出样例</p>
-<pre><code>2</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// please write your code here</span></span><br><span class="line">    String[] str=line.split(<span class="string">" "</span>);</span><br><span class="line">    String[] str1=str[<span class="number">0</span>].split(<span class="string">","</span>);</span><br><span class="line">    String goal=str[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str1.length;i++)&#123;</span><br><span class="line">    	<span class="keyword">if</span>(str1[i].equals(goal))&#123;</span><br><span class="line">        	<span class="keyword">return</span> String.valueOf(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.768Z"><a href="/2020/07/03/小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数 (1)/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数 (1)/">小米OJ上分日记——（十四） 在一个有序的经过旋转的数组里查找一个数 (1)</a></h1>
+    <h1 class="title"><a href="/2020/07/03/在一个有序的经过旋转的数组里查找一个数/">在一个有序的经过旋转的数组里查找一个数</a></h1>
   
 
     </header>
@@ -336,11 +247,55 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.765Z"><a href="/2020/07/03/小米OJ上分日记——（十三）出现频率最高的前 K 个元素/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.768Z"><a href="/2020/07/03/在一个有序的经过旋转的数组里查找一个数 (1)/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日记——（十三）出现频率最高的前 K 个元素/">小米OJ上分日记——（十三）出现频率最高的前 K 个元素</a></h1>
+    <h1 class="title"><a href="/2020/07/03/在一个有序的经过旋转的数组里查找一个数 (1)/">在一个有序的经过旋转的数组里查找一个数 (1)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>序号：#14<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>假设一个有序的数组，经过未知次数的旋转（例如0 1 2 4 5 6 7 被旋转成 4 5 6 7 0 1 2），从中查找一个目标值，如果存在，返回其下标，不存在，返回-1。注：假设数组无重复数字</p>
+<p>输入<br>输入一个有序经过旋转的数组和要查找的目标数字，数组中各数字用“逗号”分隔，数组和目标数字用“空格”分隔</p>
+<p>输出<br>一个整数，表示该目标数字的下标（不存在返回-1）</p>
+<p>输入样例</p>
+<pre><code>4,5,6,7,0,1,2 6</code></pre><p>输出样例</p>
+<pre><code>2</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// please write your code here</span></span><br><span class="line">    String[] str=line.split(<span class="string">" "</span>);</span><br><span class="line">    String[] str1=str[<span class="number">0</span>].split(<span class="string">","</span>);</span><br><span class="line">    String goal=str[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str1.length;i++)&#123;</span><br><span class="line">    	<span class="keyword">if</span>(str1[i].equals(goal))&#123;</span><br><span class="line">        	<span class="keyword">return</span> String.valueOf(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.765Z"><a href="/2020/07/03/出现频率最高的前 K 个元素/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/07/03/出现频率最高的前 K 个元素/">出现频率最高的前 K 个元素</a></h1>
   
 
     </header>
@@ -381,11 +336,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.762Z"><a href="/2020/07/03/小米OJ上分日记——（九）移除 K 位得到最小值/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.762Z"><a href="/2020/07/03/移除 K 位得到最小值/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日记——（九）移除 K 位得到最小值/">小米OJ上分日记——（九）移除 K 位得到最小值</a></h1>
+    <h1 class="title"><a href="/2020/07/03/移除 K 位得到最小值/">移除 K 位得到最小值</a></h1>
   
 
     </header>
@@ -514,6 +469,66 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.748Z"><a href="/2020/07/03/nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/07/03/nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）/">nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><ul>
+<li>命令行设置npm设置成淘宝镜像</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><ul>
+<li>使用阿里定制的 cnpm 命令行工具代替默认的 npm，输入下面代码进行安装：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.检测cnpm版本，如果安装成功可以看到cnpm的基本信息。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以后安装插件只需要使用cnpm intall即可</li>
+</ul>
+<h2 id="另外"><a href="#另外" class="headerlink" title="另外"></a>另外</h2><ul>
+<li>修改sass安装的源，再运行npm install</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> sass_binary_site=https://npm.taobao.org/mirrors/node-sass</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
 
 <nav id="pagination">
   
@@ -539,23 +554,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（五）找出旋转有序数列的中间值/">小米OJ上分日志——（五）找出旋转有序数列的中间值</a>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（四）最长连续数列/">小米OJ上分日志——（四）最长连续数列</a>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十一）构建短字符串/">小米OJ上分日志——（十一）构建短字符串</a>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十五）和为零的三元组/">小米OJ上分日志——（十五）和为零的三元组</a>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十六）栈实现四则运算/">小米OJ上分日志——（十六）栈实现四则运算</a>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
       </li>
     
   </ul>

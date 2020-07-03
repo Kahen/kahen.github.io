@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>小米兔跳格子 | Kahen的个人技术博客</title>
+  <meta name="author" content="Kahen" />
+
+  
+  <meta name="description" content="序号：#119难度：一般时间限制：1000ms内存限制：30M描述米兔爸爸为了让小米兔好好锻炼身体，便给小米兔设置了一个挑战——跳格子。
+要吃到自己心爱的胡萝卜，小米兔需要跳过面前一些格子。现有 NN 个格子，每个格子内都写上了一个非负数，表示当前最多可以往前跳多少格，胡萝卜就放在最后一个格子上。米" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="小米兔跳格子" />
+  <meta property="og:site_name" content="Kahen的个人技术博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Kahen的个人技术博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.774Z"><a href="/2020/07/03/小米兔跳格子/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title">小米兔跳格子</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>序号：#119<br>难度：一般<br>时间限制：1000ms<br>内存限制：30M<br>描述<br>米兔爸爸为了让小米兔好好锻炼身体，便给小米兔设置了一个挑战——跳格子。</p>
+<p>要吃到自己心爱的胡萝卜，小米兔需要跳过面前一些格子。现有 NN 个格子，每个格子内都写上了一个非负数，表示当前最多可以往前跳多少格，胡萝卜就放在最后一个格子上。米兔开始站在第 1 个格子，试判断米兔能不能跳到最后一个格子吃到胡萝卜呢？</p>
+<p>输入</p>
+<blockquote>
+<p>输入为 NN 个数字 (N \lt 10N&lt;10)，用空格隔开，第 ii 个数字 s_is  i ​       ( 0 \le s_i \lt<br>100≤s  i ​      &lt;10) 表示米兔站在第 ii 个格子上时，最多能往前跳的格数。</p>
+</blockquote>
+<p>输出</p>
+<blockquote>
+<p>若米兔能跳到最后一个格子上吃到胡萝卜，输出 “true“，否则输出 “false“</p>
+</blockquote>
+<p>输入样例</p>
+<pre><code>2 0 1 0 0 3 4</code></pre><p>输出样例</p>
+<pre><code>false</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">           String[] arr = line.split(<span class="string">" "</span>);</span><br><span class="line">			<span class="keyword">int</span> maxDistance = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">			    <span class="keyword">if</span>(i &gt; maxDistance || maxDistance &gt;= arr.length) <span class="keyword">break</span>;</span><br><span class="line">			    maxDistance = Math.max(i + Integer.valueOf(arr[i]), maxDistance);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//System.out.println(arr.length);</span></span><br><span class="line">			<span class="keyword">return</span> (maxDistance &gt;= arr.length-<span class="number">1</span>) + <span class="string">""</span>;  <span class="comment">//arr.length-1:对只有单独的0处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:kahen.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 Kahen
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

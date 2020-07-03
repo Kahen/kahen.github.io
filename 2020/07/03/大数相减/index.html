@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>大数相减 | Kahen的个人技术博客</title>
+  <meta name="author" content="Kahen" />
+
+  
+  <meta name="description" content="序号：#3难度：有挑战时间限制：1000ms内存限制：100M
+描述两个长度超出常规整形变量上限的大数相减，请避免使用各语言内置大数处理库，如 Java.math.BigInteger 等。
+输入有 N 行测试数据，每一行有两个代表整数的字符串 a 和 b，长度超过百位。规定 a&amp;gt;=b，a, " />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="大数相减" />
+  <meta property="og:site_name" content="Kahen的个人技术博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Kahen的个人技术博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.797Z"><a href="/2020/07/03/大数相减/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title">大数相减</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>序号：#3<br>难度：有挑战<br>时间限制：1000ms<br>内存限制：100M</p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>两个长度超出常规整形变量上限的大数相减，请避免使用各语言内置大数处理库，如 Java.math.BigInteger 等。</p>
+<p><strong>输入</strong><br>有 N 行测试数据，每一行有两个代表整数的字符串 a 和 b，长度超过百位。规定 a&gt;=b，a, b &gt; 0。 测试结果可以用 linux 小工具 bc进行测试是否正确。</p>
+<p><strong>输出</strong><br>返回表示结果整数的字符串。</p>
+<p><strong>输入样例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739878951331231231237812739870-89513312312312378127398789513312312312378127398789513312312312378127398789513</span><br><span class="line">1231231237812739878951331231231237812739878951331231231237812739878951331230000000000000000000000001-331231231237812739878951331231231</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例</strong></p>
+<pre><code>1231231237812739878951331231231237812739878951331231231237812650365639018918853110413950365639018918853110413950365639018918853110413950357
+1231231237812739878951331231231237812739878951331231231237812739878620099998762187260121048668768770</code></pre><h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>   该题不能使用内置大数处理库，那么我们可以简单的使用字符数组储存输入字符串，考虑到位数不一致，我们将字符串倒转相减就可以得到结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 已引入：</span></span><br><span class="line"><span class="comment">* java.util.*</span></span><br><span class="line"><span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span></span><br><span class="line"><span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 处理后的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// please write your code here</span></span><br><span class="line">        String[] s = line.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">char</span> [] a = <span class="keyword">new</span> StringBuilder(s[<span class="number">0</span>]).reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">char</span> [] b = <span class="keyword">new</span> StringBuilder(s[<span class="number">1</span>]).reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">int</span> [] minus = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;a.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> A = a[i]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">int</span> B;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;b.length)&#123;</span><br><span class="line">                B=b[i]-<span class="string">'0'</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                B=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            minus[i] = A-B;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder re = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;minus.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (minus[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                minus[i+<span class="number">1</span>]--;</span><br><span class="line">                minus[i]+=<span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            re.append(minus[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> re.reverse().toString().replaceAll(<span class="string">"^(0+)"</span>,<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:kahen.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 Kahen
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

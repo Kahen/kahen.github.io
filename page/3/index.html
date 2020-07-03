@@ -62,66 +62,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.748Z"><a href="/2020/07/03/nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）/">2020-07-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2020/07/03/nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）/">nodejs命令npm install和npm build经常失败解决方法（nodejs换淘宝镜像）</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><ul>
-<li>命令行设置npm设置成淘宝镜像</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><ul>
-<li>使用阿里定制的 cnpm 命令行工具代替默认的 npm，输入下面代码进行安装：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>.检测cnpm版本，如果安装成功可以看到cnpm的基本信息。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>以后安装插件只需要使用cnpm intall即可</li>
-</ul>
-<h2 id="另外"><a href="#另外" class="headerlink" title="另外"></a>另外</h2><ul>
-<li>修改sass安装的源，再运行npm install</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> sass_binary_site=https://npm.taobao.org/mirrors/node-sass</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2020-07-03T09:06:15.745Z"><a href="/2020/07/03/idea创建ssm框架整合的maven包时出现org.springframework.beans.factory.BeanCreationException_ Error creating bean/">2020-07-03</a></time>
       
       
@@ -168,11 +108,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2020-07-03T09:06:15.741Z"><a href="/2020/07/03/小米OJ上分日志——（一）A+B/">2020-07-03</a></time>
+        <time datetime="2020-07-03T09:06:15.741Z"><a href="/2020/07/03/（一）A+B/">2020-07-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2020/07/03/小米OJ上分日志——（一）A+B/">小米OJ上分日志——（一）A+B</a></h1>
+    <h1 class="title"><a href="/2020/07/03/（一）A+B/">（一）A+B</a></h1>
   
 
     </header>
@@ -757,6 +697,70 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-05-19T03:00:55.563Z"><a href="/2020/05/19/Linux 目录结构及文件基本操作/">2020-05-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/05/19/Linux 目录结构及文件基本操作/">Linux 目录结构及文件基本操作</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="Linux-目录结构及文件基本操作"><a href="#Linux-目录结构及文件基本操作" class="headerlink" title="Linux 目录结构及文件基本操作"></a>Linux 目录结构及文件基本操作</h1><h2 id="二、Linux-目录结构"><a href="#二、Linux-目录结构" class="headerlink" title="二、Linux 目录结构"></a>二、Linux 目录结构</h2><h3 id="1-FHS标准"><a href="#1-FHS标准" class="headerlink" title="1.FHS标准"></a>1.FHS标准</h3><p>FHS 定义了两层规范，第一层是， <code>/</code> 下面的各个目录应该要放什么文件数据，例如 <code>/etc</code> 应该放置设置文件，<code>/bin</code> 与 <code>/sbin</code> 则应该放置可执行文件等等。</p>
+<p>第二层则是针对 <code>/usr</code> 及 <code>/var</code> 这两个目录的子目录来定义。例如 <code>/var/log</code> 放置系统日志文件，<code>/usr/share</code> 放置共享数据等等。</p>
+<h3 id="2-目录路径"><a href="#2-目录路径" class="headerlink" title="2.目录路径"></a>2.目录路径</h3><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585103644135.png" alt="1585103644135"></p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585103654563.png" alt="1585103654563"></p>
+<h4 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h4><p>关于绝对路径，简单地说就是以根” / “目录为起点的完整路径。</p>
+<h4 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h4><p>相对路径，也就是相对于你当前的目录的路径，相对路径是以当前目录 <code>.</code> 为起点，以你所要到的目录为终点。</p>
+<h3 id="3-Linux-文件操作"><a href="#3-Linux-文件操作" class="headerlink" title="3.Linux 文件操作"></a>3.Linux 文件操作</h3><h4 id="1-新建"><a href="#1-新建" class="headerlink" title="1.新建"></a>1.新建</h4><p>新建空白文件</p>
+<p> 新建目录</p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585104370269.png" alt="1585104370269"></p>
+<h4 id="2-复制"><a href="#2-复制" class="headerlink" title="2.复制"></a>2.复制</h4><p>复制文件</p>
+<p>复制目录</p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585104495227.png" alt="1585104495227"></p>
+<h4 id="3-删除"><a href="#3-删除" class="headerlink" title="3.删除"></a>3.删除</h4><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585105188667.png" alt="1585105188667"></p>
+<h4 id="4-移动文件和文件重命名"><a href="#4-移动文件和文件重命名" class="headerlink" title="4.移动文件和文件重命名"></a>4.移动文件和文件重命名</h4><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585105551977.png" alt="1585105551977"></p>
+<h4 id="5-查看文件"><a href="#5-查看文件" class="headerlink" title="5.查看文件"></a>5.查看文件</h4><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585106201930.png" alt=""></p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585106522472.png" alt="1585106522472"></p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585106530274.png" alt="1585106530274"></p>
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585106546411.png" alt="1585106546411"></p>
+<h4 id="6-查看文件类型"><a href="#6-查看文件类型" class="headerlink" title="6.查看文件类型"></a>6.查看文件类型</h4><p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585107049789.png" alt="1585107049789"></p>
+<h4 id="7-编辑文件"><a href="#7-编辑文件" class="headerlink" title="7.编辑文件"></a>7.编辑文件</h4><p>vim</p>
+<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><h5 id="1-创建一个-homework-目录，建立名为-1-txt～10-txt-文件，并删除-1-txt～5-txt-。"><a href="#1-创建一个-homework-目录，建立名为-1-txt～10-txt-文件，并删除-1-txt～5-txt-。" class="headerlink" title="1. 创建一个 homework 目录，建立名为 1.txt～10.txt 文件，并删除 1.txt～5.txt 。"></a>1. 创建一个 homework 目录，建立名为 1.txt～10.txt 文件，并删除 1.txt～5.txt 。</h5><h5 id="2-Linux-的日志文件在哪个目录？"><a href="#2-Linux-的日志文件在哪个目录？" class="headerlink" title="2. Linux 的日志文件在哪个目录？"></a>2. Linux 的日志文件在哪个目录？</h5><p>1.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch file&#123;1..10&#125;.txt</span><br><span class="line">rm &#123;1..5&#125;.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="E:%5CLegend%5CMarkDown%5Cimages%5C1585107657584.png" alt="1585107657584"></p>
+<ol start="2">
+<li>日志文件通常保存在/var/log目录下 </li>
+</ol>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
 
 <nav id="pagination">
   
@@ -782,23 +786,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（五）找出旋转有序数列的中间值/">小米OJ上分日志——（五）找出旋转有序数列的中间值</a>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（四）最长连续数列/">小米OJ上分日志——（四）最长连续数列</a>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十一）构建短字符串/">小米OJ上分日志——（十一）构建短字符串</a>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十五）和为零的三元组/">小米OJ上分日志——（十五）和为零的三元组</a>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
       </li>
     
       <li>
-        <a href="/2020/07/03/小米OJ上分日志——（十六）栈实现四则运算/">小米OJ上分日志——（十六）栈实现四则运算</a>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
       </li>
     
   </ul>

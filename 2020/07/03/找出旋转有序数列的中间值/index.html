@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>找出旋转有序数列的中间值 | Kahen的个人技术博客</title>
+  <meta name="author" content="Kahen" />
+
+  
+  <meta name="description" content="序号：#5难度：一般时间限制：1000ms内存限制：10M描述给出一个有序数列随机旋转之后的数列，如原有序数列为：[0,1,2,4,5,6,7] ，旋转之后为[4,5,6,7,0,1,2]。 假定数列中无重复元素，且数列长度为奇数。 求出旋转数列的中间值。如数列[4,5,6,7,0,1,2]的中间值" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="找出旋转有序数列的中间值" />
+  <meta property="og:site_name" content="Kahen的个人技术博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="Kahen的个人技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Kahen的个人技术博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-07-03T09:06:15.823Z"><a href="/2020/07/03/找出旋转有序数列的中间值/">2020-07-03</a></time>
+      
+      
+  
+    <h1 class="title">找出旋转有序数列的中间值</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>序号：#5<br>难度：一般<br>时间限制：1000ms<br>内存限制：10M<br>描述<br>给出一个有序数列随机旋转之后的数列，如原有序数列为：[0,1,2,4,5,6,7] ，旋转之后为[4,5,6,7,0,1,2]。 假定数列中无重复元素，且数列长度为奇数。 求出旋转数列的中间值。如数列[4,5,6,7,0,1,2]的中间值为4。</p>
+<p>输入</p>
+<pre><code>4,5,6,7,0,1,2</code></pre><p>输出</p>
+<pre><code>4</code></pre><p>输入样例</p>
+<pre><code>1
+1,2,3
+4,5,6,7,0,1,2
+12,13,14,5,6,7,8,9,10</code></pre><p>输出样例</p>
+<pre><code>1
+2
+4
+9</code></pre><p>分析：这题将数组重新排序很容易找到中间值</p>
+<pre><code class="java"><span class="comment">/**</span>
+<span class="comment">* 已引入：</span>
+<span class="comment">* java.util.*</span>
+<span class="comment">* 要使用其他 jar 包请使用完整路径，如：</span>
+<span class="comment">* java.util.List&lt;java.util.List&lt;Integer&gt;&gt; list = new java.util.ArrayList&lt;java.util.List&lt;Integer&gt;&gt;(100);</span>
+<span class="comment">* <span class="doctag">@param</span>  line 为单行测试数据</span>
+<span class="comment">* <span class="doctag">@return</span> 处理后的结果</span>
+<span class="comment">*/</span>
+<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">solution</span><span class="params">(String line)</span> </span>{
+    <span class="comment">// please write your code here</span>
+    String arr[]=line.split(<span class="string">","</span>);
+    <span class="keyword">int</span> arr2[]=<span class="keyword">new</span> <span class="keyword">int</span>[arr.length];
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++){
+        arr2[i]=Integer.parseInt(arr[i]);
+    }
+    Arrays.sort(arr2);
+    <span class="keyword">return</span> String.valueOf(arr2[arr2.length/<span class="number">2</span>]);
+    <span class="comment">// return ans;</span>
+}</code></pre>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:kahen.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/07/03/找出旋转有序数列的中间值/">找出旋转有序数列的中间值</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/最长连续数列/">最长连续数列</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/构建短字符串/">构建短字符串</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/和为零的三元组/">和为零的三元组</a>
+      </li>
+    
+      <li>
+        <a href="/2020/07/03/栈实现四则运算/">栈实现四则运算</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 Kahen
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
