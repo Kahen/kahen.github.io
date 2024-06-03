@@ -4,9 +4,15 @@ export default sidebar({
   "/": [
     "",
     {
-      text: "文章",
+      text: "BaelDung",
       icon: "book",
-      prefix: "posts/",
+      prefix: "posts/baeldung/",
+      children: "structure",
+    },
+    {
+      text: "个人博客",
+      icon: "book",
+      prefix: "posts/articles/",
       children: "structure",
     },
   ],

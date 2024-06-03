@@ -3,14 +3,16 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
-    text: "博文",
-    icon: "pen-to-square",
-    prefix: "/posts/",
-    link: "/posts/",
+    text: "Baeldung",
+    icon: "book",
+
+    prefix: "/posts/baeldung/",
+    link: "/posts/baeldung/",
   },
-  // {
-  //   text: "V2 文档",
-  //   icon: "book",
-  //   link: "https://theme-hope.vuejs.press/zh/",
-  // },
+  {
+    text: "个人博客",
+    icon: "pen-to-square",
+    prefix: "/posts/articles/",
+    link: "/posts/articles/",
+  },
 ]);
