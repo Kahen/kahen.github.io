@@ -62,7 +62,7 @@ def fetch_output(link, title):
     response = requests.request("POST", url, headers=headers, data=payload)
 
     # Create the file path
-    file_path = os.path.join('src', 'posts', 'articles', f'{title}.md')
+    file_path = os.path.join('src', 'posts', 'baeldung', f'{title}.md')
 
     # Write the response to the file
     with open(file_path, 'w') as f:
