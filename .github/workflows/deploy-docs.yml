@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: [ "Douban Get Json" ]
+    types:
+      - completed
 
 permissions:
   contents: write
