@@ -1,10 +1,12 @@
 import requests
 import json
 import os
-kimi_token=os.getenv("KIMI_TOKEN")
-strapi_token=os.getenv("STRAPI_TOKEN")
-kimi_host=os.getenv("KIMI_HOST")
-strapi_host=os.getenv("STRAPI_HOST")
+
+kimi_token = os.environ["KIMI_TOKEN"]
+strapi_token = os.environ["STRAPI_TOKEN"]
+kimi_host = os.environ["KIMI_HOST"]
+strapi_host = os.environ["STRAPI_HOST"]
+
 
 def get_title_and_url():
     url = f"https://{strapi_host}/api/blogs?pagination[page]=1&pagination[pageSize]=1&pagination[withCount]=true&filters[$and][0][crawled][$eq]=false&filters[$and][1][title][$notContains]=Issue"
