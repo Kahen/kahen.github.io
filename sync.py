@@ -13,12 +13,11 @@ strapi_host = os.environ["STRAPI_HOST"]
 def get_title_and_url():
     url = f"https://{strapi_host}/api/blogs?pagination[page]=1&pagination[pageSize]=1&pagination[withCount]=true&filters[$and][0][crawled][$eq]=false&filters[$and][1][title][$notContains]=Issue"
 
-    payload = {}
     headers = {
         'Authorization': f'Bearer {strapi_token}'
     }
 
-    return requests.request("GET", url, headers=headers, data=payload)
+    return requests.request("GET", url, headers=headers)
 
 
 def updateStatus(id):
@@ -70,7 +69,9 @@ def fetch_output(link, title):
     with open(file_path, 'w') as f:
         f.write(process_text(response.text))
 
+
 import re
+
 
 def process_text(input_text):
     # 使用正则表达式找到所有的尖括号包围的文本
@@ -85,11 +86,15 @@ def process_text(input_text):
 
     return input_text
 
-blog = json.loads(get_title_and_url().text)
+
+blog_response = get_title_and_url()
+print(f"blog_response:{blog_response}")
+print(f"blog_response.text:{blog_response.text}")
+blog = json.loads(blog_response.text)
 url = blog['data'][0]['attributes']['link']
 title = blog['data'][0]['attributes']['title']
 # Replace unsafe characters
-safe_title = re.sub('[^a-zA-Z0-9\n\.]', ' ', title)
+safe_title = re.sub('[^a-zA-Z0-9\n.]', ' ', title)
 id = blog['data'][0]['id']
 fetch_output(url, safe_title)
 updateStatus(id)
