@@ -1,0 +1,71 @@
+name: ci
+on:
+  workflow_dispatch: # manual trigger
+  schedule:
+    # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+    # Runs every day at 00:00
+    - cron:  '0 0 * * *'
+jobs:
+  docker:
+    environment: deployhcs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      #      - name: Login to Docker Hub
+      #        uses: docker/login-action@v3
+      #        with:
+      #          username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Aliyun ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.ALIYUN_REGISTRY }}
+          username: ${{ secrets.ALIYUN_USER }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ vars.ALIYUN_REGISTRY }}/${{ vars.ALIYUN_NAMESPACE }}/${{ vars.APP_NAME }}:latest
+            ${{ vars.ALIYUN_REGISTRY }}/${{ vars.ALIYUN_NAMESPACE }}/${{ vars.APP_NAME }}:${{ github.sha }}
+
+      - name: Kubectl tool installer
+        uses: Azure/setup-kubectl@v4.0.0
+        with:
+          # Version of kubectl
+          version: ${{ vars.KUBECTL_VERSION }}
+
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          # Acceptable values: generic or arc
+          cluster-type: generic
+          # Acceptable values: kubeconfig or service-account or service-principal
+          method: kubeconfig
+          # Contents of kubeconfig file
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+#      - name: Deploy to k8s
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y sed
+#          sed -i "s@<REGISTRY>/<REGISTRY_NAMESPACE>/<APP_NAME>:<VERSION>@${{ vars.ALIYUN_REGISTRY }}/${{ vars.ALIYUN_NAMESPACE }}/${{ vars.APP_NAME }}:${{ github.sha }}@g" deployments/app/app-deployment.yaml
+#          sed -i "s@<APP_KEYS>@${{ secrets.APP_KEYS }}@g" deployments/app/config.yaml
+#          sed -i "s@<API_TOKEN_SALT>@${{ secrets.API_TOKEN_SALT }}@g" deployments/app/config.yaml
+#          sed -i "s@<ADMIN_JWT_SECRET>@${{ secrets.ADMIN_JWT_SECRET }}@g" deployments/app/config.yaml
+#          sed -i "s@<JWT_SECRET>@${{ secrets.JWT_SECRET }}@g" deployments/app/config.yaml
+#          sed -i "s@<TRANSFER_TOKEN_SALT>@${{ secrets.TRANSFER_TOKEN_SALT }}@g" deployments/app/config.yaml
+#          sed -i "s@<DATABASE_PASSWORD>@${{ secrets.DATABASE_PASSWORD }}@g" deployments/app/config.yaml
+#          kubectl apply -f deployments/app/postgres-sql-configmap.yaml
+#          kubectl apply -f deployments/app/app-deployment.yaml
