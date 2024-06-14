@@ -10,7 +10,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 
 FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN pnpm run docs:build > src/.vuepress/dist/.nojekyll
+RUN pnpm run docs:build
 
 FROM nginx:stable-alpine AS production
 COPY --from=build /app/src/.vuepress/dist /usr/share/nginx/html
