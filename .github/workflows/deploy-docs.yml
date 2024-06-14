@@ -6,7 +6,7 @@ on:
     branches:
       - main
   workflow_run:
-    workflows: [ "Douban Get Json" ]
+    workflows: [ "Python application" ]
     types:
       - completed
 
