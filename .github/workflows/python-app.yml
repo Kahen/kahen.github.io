@@ -8,7 +8,7 @@ on:
   schedule:
     # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
     # Runs every 60 min
-    - cron:  '0/60 * * * *'
+   # - cron:  '0/60 * * * *'
 
 jobs:
   build:
