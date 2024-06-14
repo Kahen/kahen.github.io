@@ -1,3 +1,5 @@
+import re
+
 import requests
 import json
 import os
@@ -72,6 +74,8 @@ def fetch_output(link, title):
 blog = json.loads(get_title_and_url().text)
 url = blog['data'][0]['attributes']['link']
 title = blog['data'][0]['attributes']['title']
+# Replace unsafe characters
+safe_title = re.sub('[^a-zA-Z0-9\n\.]', ' ', title)
 id = blog['data'][0]['id']
-fetch_output(url, title)
+fetch_output(url, safe_title)
 updateStatus(id)
