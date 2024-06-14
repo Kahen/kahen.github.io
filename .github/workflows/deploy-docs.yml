@@ -6,9 +6,8 @@ on:
     branches:
       - main
   workflow_run:
-    workflows: [ "Python application" ]
-    types:
-      - completed
+    workflows: [Python application]
+    types: [completed]
 
 permissions:
   contents: write
