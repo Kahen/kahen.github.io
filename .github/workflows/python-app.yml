@@ -5,10 +5,10 @@ name: Python application
 
 on:
   workflow_dispatch: # manual trigger
-  # schedule:
-  #   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
-  #   # Runs every 6 min
-  #   - cron:  '0/30 * * * *'
+  schedule:
+    # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+    # Runs every 60 min
+    - cron:  '0/60 * * * *'
 
 jobs:
   build:
