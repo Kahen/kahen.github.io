@@ -68,8 +68,22 @@ def fetch_output(link, title):
 
     # Write the response to the file
     with open(file_path, 'w') as f:
-        f.write(response.text)
+        f.write(process_text(response.text))
 
+import re
+
+def process_text(input_text):
+    # 使用正则表达式找到所有的尖括号包围的文本
+    matches = re.findall(r'<[^>]+>', input_text)
+
+    # 遍历所有的匹配项
+    for match in matches:
+        # 使用反引号包裹每个匹配项
+        replaced = f'`{match}`'
+        # 在输入文本中替换匹配项
+        input_text = input_text.replace(match, replaced)
+
+    return input_text
 
 blog = json.loads(get_title_and_url().text)
 url = blog['data'][0]['attributes']['link']

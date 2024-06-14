@@ -185,9 +185,9 @@ _Constants_类为每种类型定义了值。这些将用作注解的参数值。
 ```java
 @Test
 public void testEnumAndConstantsSync() {
-    Set<String> enumValues = getEnumNames();
-    List<String> constantValues = getConstantValues();
-    Set<String> uniqueConstantValues = constantValues.stream().distinct().collect(Collectors.toSet());
+    Set\<String\> enumValues = getEnumNames();
+    List\<String\> constantValues = getConstantValues();
+    Set\<String\> uniqueConstantValues = constantValues.stream().distinct().collect(Collectors.toSet());
     assertEquals(constantValues.size(), uniqueConstantValues.size());
     assertEquals(enumValues, uniqueConstantValues);
 }
@@ -224,7 +224,7 @@ class DataController {
 ```java
 static ExtendedRequestContentType toEnum(String constant) {
     return Arrays.stream(ExtendedRequestContentType.values())
-      .filter(contentType -> contentType.name().equals(constant))
+      .filter(contentType -\> contentType.name().equals(constant))
       .findFirst()
       .orElseThrow(IllegalArgumentException::new);
 }

@@ -69,13 +69,13 @@ infer analyze
 Java的一个流行的构建系统是Maven，我们可以以以下方式与Infer一起使用：
 
 ```
-infer run -- mvn <maven target>
+infer run -- mvn \<maven target\>
 ```
 
 我们还可以使用Infer与Gradle一起使用：
 
 ```
-infer run -- gradle <gradle task>
+infer run -- gradle \<gradle task\>
 ```
 
 ### 3.4 推荐用于CI的流程
@@ -114,7 +114,7 @@ Found 1 issue
   object str last assigned on line 10 could be null and is dereferenced at line 11
    9.       private static void nullPointerDereference() {
   10.           String str = null;
-  11. >         int length = str.length();
+  11. \>         int length = str.length();
   12.       }
   13.   }
 
@@ -155,7 +155,7 @@ Found 1 issue
    resource of type java.io.FileOutputStream acquired to stream by call to FileOutputStream(...) at line 17 is not released after line 21
   19.               return;
   20.           }
-  21. >         stream.write(0);
+  21. \>         stream.write(0);
   22.       }
   23.   }
 
@@ -192,7 +192,7 @@ Found 1 issue
   6. private static void divideByZero() {
   7.     int dividend = 5;
   8.     int divisor = 0;
-  9. >    int result = dividend / divisor;
+  9. \>    int result = dividend / divisor;
   10. }
 
 Summary of the reports

@@ -44,11 +44,11 @@ assertEquals("*text*", replaced);
 
 ```
 String str = "*te*xt**";
-String replacedUsingLookaround = str.replaceAll("(?<!^)\\*+(?!$)", "");
+String replacedUsingLookaround = str.replaceAll("(?\<!^)\\*+(?!$)", "");
 assertEquals("*text*", replacedUsingLookaround);
 ```
 
-在这个例子中，(?<!^)\\*+捕获一个或多个星号(\\*+)，这些星号前面没有字符串的开头((?<!^))。简而言之，我们正在进行一个负向环视。接下来，(?!$)部分是一个负向环视，我们定义它来忽略后面是字符串结尾的星号。最后，空的替换字符串在这里删除所有匹配的字符。因此，这种方法更容易理解，因为我们选择所有我们想要删除的字符：
+在这个例子中，(?\<!^)\\*+捕获一个或多个星号(\\*+)，这些星号前面没有字符串的开头((?\<!^))。简而言之，我们正在进行一个负向环视。接下来，(?!$)部分是一个负向环视，我们定义它来忽略后面是字符串结尾的星号。最后，空的替换字符串在这里删除所有匹配的字符。因此，这种方法更容易理解，因为我们选择所有我们想要删除的字符：
 
 除了可读性之外，这两种方法在性能上也有所不同。让我们接下来检查它们。
 
@@ -80,7 +80,7 @@ public class RegexpBenchmark {
 
     @Benchmark
     public void lookaround(BenchmarkState state) {
-        state.testString.replaceAll("(?<!^)\\*+(?!$)", "");
+        state.testString.replaceAll("(?\<!^)\\*+(?!$)", "");
     }
 
     public static void main(String[] args) throws Exception {

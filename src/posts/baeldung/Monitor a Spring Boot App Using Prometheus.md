@@ -32,15 +32,15 @@ Prometheus是一个**开源项目，旨在深入挖掘我们的应用程序数�
 让我们将依赖项添加到Maven项目的_pom.xml_文件中：
 
 ```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
+\<dependency\>
+    \<groupId\>org.springframework.boot\</groupId\>
+    \<artifactId\>spring-boot-starter-actuator\</artifactId\>
+\</dependency\>
 
-<dependency>
-    <groupId>io.micrometer</groupId>
-    <artifactId>micrometer-registry-prometheus</artifactId>
-</dependency>
+\<dependency\>
+    \<groupId\>io.micrometer\</groupId\>
+    \<artifactId\>micrometer-registry-prometheus\</artifactId\>
+\</dependency\>
 ```
 
 如果我们使用Gradle，我们在_build.gradle_文件中包含这些：
@@ -139,7 +139,7 @@ scrape_configs:
 
 1. 通过访问官方Grafana下载页面安装Grafana。
 2. 启动Grafana，并通过在Web浏览器中访问_http://localhost:3000_来访问其Web界面。
-3. 通过在Grafana的UI中导航到_Configuration > Data Sources > Add data source_来将Prometheus添加为数据源。我们选择Prometheus作为类型，并指定Prometheus运行的URL，通常是_http://localhost:9090_。
+3. 通过在Grafana的UI中导航到_Configuration \> Data Sources \> Add data source_来将Prometheus添加为数据源。我们选择Prometheus作为类型，并指定Prometheus运行的URL，通常是_http://localhost:9090_。
 4. 保存并测试以确认Grafana可以成功连接到Prometheus。
 
 **在Grafana中创建仪表板：**

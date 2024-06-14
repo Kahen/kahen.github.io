@@ -22,7 +22,7 @@ map()方法提供了一个高层次的抽象，用于处理元素序列。它是
 有时，映射函数可能会返回空值。然而，我们希望从转换结果中排除这些空值。例如，假设我们有一个字符串列表：
 
 ```java
-static final List<String> INPUT = List.of("f o o", "a,b,c,d", "b a r", "w,x,y,z", "w,o,w");
+static final List\<String\> INPUT = List.of("f o o", "a,b,c,d", "b a r", "w,x,y,z", "w,o,w");
 ```
 
 我们希望使用以下映射函数来转换INPUT中的字符串元素：
@@ -42,7 +42,7 @@ String commaToSpace(String input) {
 现在，我们想使用commaToSpace()来转换我们的INPUT，并确保结果中不包含空值。这是我们期望的结果：
 
 ```java
-static final List<String> EXPECTED = List.of("a b c d", "w x y z", "w o w");
+static final List\<String\> EXPECTED = List.of("a b c d", "w x y z", "w o w");
 ```
 
 如我们所见，INPUT列表有五个元素，但EXPECTED列表有三个。
@@ -60,8 +60,8 @@ static final List<String> EXPECTED = List.of("a b c d", "w x y z", "w o w");
 接下来，让我们通过一个测试来看看这是如何完成的：
 
 ```java
-List<String> result = INPUT.stream()
-  .map(str -> commaToSpace(str))
+List\<String\> result = INPUT.stream()
+  .map(str -\> commaToSpace(str))
   .filter(Objects::nonNull)
   .collect(Collectors.toList());
 
@@ -75,8 +75,8 @@ assertEquals(EXPECTED, result);
 当涉及到处理空值时，有些人可能会考虑利用Optional类，该类旨在不显式使用空值来处理可选值：
 
 ```java
-List<String> result = INPUT.stream()
-  .map(str -> Optional.ofNullable(commaToSpace(str)))
+List\<String\> result = INPUT.stream()
+  .map(str -\> Optional.ofNullable(commaToSpace(str)))
   .filter(Optional::isPresent)
   .map(Optional::get)
   .collect(Collectors.toList());
@@ -84,7 +84,7 @@ List<String> result = INPUT.stream()
 assertEquals(EXPECTED, result);
 ```
 
-如上述示例所示，我们首先**将可空值包装在Optional对象中，结果是一个Stream<Optional<String>>**。然后，我们使用filter()方法从Stream中移除所有不存在的Optional。最后，为了获得Stream<Optional<String>>中包含的字符串值，我们需要**一个额外的步骤来使用map(Optional::get)提取值**。
+如上述示例所示，我们首先**将可空值包装在Optional对象中，结果是一个Stream\<Optional\<String\>\>**。然后，我们使用filter()方法从Stream中移除所有不存在的Optional。最后，为了获得Stream\<Optional\<String\>\>中包含的字符串值，我们需要**一个额外的步骤来使用map(Optional::get)提取值**。
 
 因此，正如我们所见，**Optional方法对于这个问题来说并不高效，因为不必要的包装和解包Stream中的元素**。
 
@@ -93,7 +93,7 @@ assertEquals(EXPECTED, result);
 我们已经讨论了使用Optional来处理空元素对于这个问题来说是低效的。然而，在某些情况下，**映射函数返回一个Optional对象而不是可空结果**，例如：
 
 ```java
-Optional<String> commaToSpaceOptional(String input) {
+Optional\<String\> commaToSpaceOptional(String input) {
     if (input.contains(",")) {
         return Optional.of(input.replaceAll(",", " "));
     } else {
@@ -105,8 +105,8 @@ Optional<String> commaToSpaceOptional(String input) {
 在这种情况下，我们可以使用Optional.orElse(null)来从映射函数返回的Optional中提取元素值。**这允许我们将不存在的Optional转换为map()方法中的空元素**：
 
 ```java
-List<String> result = INPUT.stream()
-  .map(str -> commaToSpaceOptional(str).orElse(null))
+List\<String\> result = INPUT.stream()
+  .map(str -\> commaToSpaceOptional(str).orElse(null))
   .filter(Objects::nonNull)
   .collect(Collectors.toList());
 

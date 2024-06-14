@@ -26,13 +26,13 @@ class CsvHeadersAsListUnitTest {
 
     private static final String CSV_FILE = "src/test/resources/employees.csv";
     private static final String COMMA_DELIMITER = ",";
-    private static final List<String> EXPECTED_HEADERS = List.of("ID", "First name", "Last name", "Salary");
+    private static final List\<String\> EXPECTED_HEADERS = List.of("ID", "First name", "Last name", "Salary");
 
     @Test
     void givenCsvFile_whenUsingBufferedReader_thenGetHeadersAsList() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE))) {
             String csvHeadersLine = reader.readLine();
-            List<String> headers = Arrays.asList(csvHeadersLine.split(COMMA_DELIMITER));
+            List\<String\> headers = Arrays.asList(csvHeadersLine.split(COMMA_DELIMITER));
             assertThat(headers).containsExactlyElementsOf(EXPECTED_HEADERS);
         }
     }
@@ -50,7 +50,7 @@ Scanner类提供了另一种解决方案来实现相同的结果。顾名思义�
 void givenCsvFile_whenUsingScanner_thenGetHeadersAsList() throws IOException {
     try(Scanner scanner = new Scanner(new File(CSV_FILE))) {
         String csvHeadersLine = scanner.nextLine();
-        List<String> headers = Arrays.asList(csvHeadersLine.split(COMMA_DELIMITER));
+        List\<String\> headers = Arrays.asList(csvHeadersLine.split(COMMA_DELIMITER));
         assertThat(headers).containsExactlyElementsOf(EXPECTED_HEADERS);
     }
 }
@@ -63,11 +63,11 @@ void givenCsvFile_whenUsingScanner_thenGetHeadersAsList() throws IOException {
 另外，我们可以使用OpenCSV库来读取特定CSV文件的头部。在深入细节之前，让我们将Maven依赖项添加到pom.xml文件中：
 
 ```xml
-<dependency>
-    <groupId>com.opencsv</groupId>
-    <artifactId>opencsv</artifactId>
-    <version>5.9</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.opencsv\</groupId\>
+    \<artifactId\>opencsv\</artifactId\>
+    \<version\>5.9\</version\>
+\</dependency\>
 ```
 
 通常，OpenCSV带有一套现成的类和方法，用于读取和解析CSV文件。让我们通过一个实际的例子来说明这个库的使用：
@@ -76,7 +76,7 @@ void givenCsvFile_whenUsingScanner_thenGetHeadersAsList() throws IOException {
 @Test
 void givenCsvFile_whenUsingOpenCSV_thenGetHeadersAsList() throws CsvValidationException, IOException {
     try (CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE))) {
-        List<String> headers = Arrays.asList(csvReader.readNext());
+        List\<String\> headers = Arrays.asList(csvReader.readNext());
         assertThat(headers).containsExactlyElementsOf(EXPECTED_HEADERS);
     }
 }
@@ -91,11 +91,11 @@ void givenCsvFile_whenUsingOpenCSV_thenGetHeadersAsList() throws CsvValidationEx
 首先，我们需要将最新版本的依赖项添加到pom.xml中：
 
 ```xml
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-csv</artifactId>
-    <version>1.11.0</version>
-</dependency>
+\<dependency\>
+    \<groupId\>org.apache.commons\</groupId\>
+    \<artifactId\>commons-csv\</artifactId\>
+    \<version\>1.11.0\</version\>
+\</dependency\>
 ```
 
 简而言之，Apache Commons CSV的CSVParser类提供了getHeaderNames()方法来返回一个只读的头部名称列表：
@@ -110,7 +110,7 @@ void givenCsvFile_whenUsingApacheCommonsCsv_thenGetHeadersAsList() throws IOExce
 
     try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE));
         CSVParser parser = CSVParser.parse(reader, csvFormat)) {
-        List<String> headers = parser.getHeaderNames();
+        List\<String\> headers = parser.getHeaderNames();
         assertThat(headers).containsExactlyElementsOf(EXPECTED_HEADERS);
     }
 }

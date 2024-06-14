@@ -59,7 +59,7 @@ transaction.commit();
 
 ```java
 Session session = entityManager.unwrap(Session.class);
-session.doWork(connection -> {
+session.doWork(connection -\> {
     try (PreparedStatement pStmt = connection.prepareStatement("UPDATE person SET name=? WHERE id=?")) {
         pStmt.setString(1, "*****");
         pStmt.setLong(2, 1);

@@ -64,10 +64,10 @@ export default hopeTheme({
       // Whatsapp: "https://example.com",
       // Youtube: "https://example.com",
       // Zhihu: "https://example.com",
-      VuePressThemeHope: [
-        "https://theme-hope.vuejs.press",
-        "https://theme-hope-assets.vuejs.press/logo.svg",
-      ],
+      // VuePressThemeHope: [
+      //   "https://theme-hope.vuejs.press",
+      //   "https://theme-hope-assets.vuejs.press/logo.svg",
+      // ],
     },
   },
 

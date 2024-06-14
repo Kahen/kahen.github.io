@@ -22,7 +22,7 @@ CompletableFuture是在Java 8中引入的，它建立在之前的Future类之上
 虽然CompletableFuture是异步的，意味着主线程在等待当前操作完成时会继续执行其他任务，但它并不是完全非阻塞的。一个长时间运行的操作可能会阻塞执行它的线程：
 
 ```java
-CompletableFuture completableFuture = CompletableFuture.supplyAsync(() -> {
+CompletableFuture completableFuture = CompletableFuture.supplyAsync(() -\> {
     try {
         Thread.sleep(1000);
     } catch (InterruptedException e) {
@@ -47,8 +47,8 @@ try {
 为了避免这种情况，我们可以使用CompletableFuture中的completeExceptionally()或complete()方法手动处理CompletableFuture的完成。例如，假设我们有一个函数，我们希望它在不阻塞主线程的情况下运行，然后，我们希望在它失败或成功完成时处理这个将来：
 
 ```java
-public void myAsyncCall(String param, BiConsumer<String, Throwable> callback) {
-    new Thread(() -> {
+public void myAsyncCall(String param, BiConsumer\<String, Throwable\> callback) {
+    new Thread(() -\> {
         try {
             Thread.sleep(1000);
             callback.accept("Response from API with param: " + param, null);
@@ -63,9 +63,9 @@ public void myAsyncCall(String param, BiConsumer<String, Throwable> callback) {
 然后，我们使用这个函数创建一个CompletableFuture：
 
 ```java
-public CompletableFuture<String> nonBlockingApiCall(String param) {
-    CompletableFuture<String> completableFuture = new CompletableFuture<>();
-    myAsyncCall(param, (result, error) -> {
+public CompletableFuture\<String\> nonBlockingApiCall(String param) {
+    CompletableFuture\<String\> completableFuture = new CompletableFuture\<\>();
+    myAsyncCall(param, (result, error) -\> {
         if (error != null) {
             completableFuture.completeExceptionally(error);
         } else {
@@ -80,12 +80,12 @@ public CompletableFuture<String> nonBlockingApiCall(String param) {
 
 ### 3. CompletableFuture与Mono的比较
 
-> 来自Project Reactor的Mono类使用反应式原则。与CompletableFuture不同，**Mono旨在以更少的开销支持并发**。
+\> 来自Project Reactor的Mono类使用反应式原则。与CompletableFuture不同，**Mono旨在以更少的开销支持并发**。
 
 此外，与CompletableFuture的急切执行相比，Mono是懒惰的，这意味着我们的应用程序不会消耗资源，除非我们订阅了Mono：
 
 ```java
-Mono<String> reactiveMono = Mono.fromCallable(() -> {
+Mono\<String\> reactiveMono = Mono.fromCallable(() -\> {
     Thread.sleep(1000); // 模拟一些计算
     return "Reactive Data";
 }).subscribeOn(Schedulers.boundedElastic());

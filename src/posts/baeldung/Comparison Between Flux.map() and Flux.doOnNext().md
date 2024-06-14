@@ -22,11 +22,11 @@ Maven依赖
 要使用Flux发布者和其他响应式操作符，让我们将reactor-core依赖项添加到pom.xml中：
 
 ```xml
-<dependency>
-    <groupId>io.projectreactor</groupId>
-    <artifactId>reactor-core</artifactId>
-    <version>3.6.5</version>
-</dependency>
+\<dependency\>
+    \<groupId\>io.projectreactor\</groupId\>
+    \<artifactId\>reactor-core\</artifactId\>
+    \<version\>3.6.5\</version\>
+\</dependency\>
 ```
 
 此依赖项提供了Flux、Mono等核心类。
@@ -34,12 +34,12 @@ Maven依赖
 同样，让我们添加reactor-test依赖项以帮助我们的单元测试：
 
 ```xml
-<dependency>
-    <groupId>io.projectreactor</groupId>
-    <artifactId>reactor-test</artifactId>
-    <version>3.6.5</version>
-    <scope>test</scope>
-</dependency>
+\<dependency\>
+    \<groupId\>io.projectreactor\</groupId\>
+    \<artifactId\>reactor-test\</artifactId\>
+    \<version\>3.6.5\</version\>
+    \<scope\>test\</scope\>
+\</dependency\>
 ```
 
 上述依赖项提供了StepVerifier等类，允许我们创建测试场景并断言响应式管道的预期行为。
@@ -59,7 +59,7 @@ Flux.map()操作符接受一个Function作为参数，并返回一个包含转�
 这是方法签名：
 
 ```java
-public final <V> Flux<V> map(Function<? super T,? extends V> mapper)
+public final \<V\> Flux\<V\> map(Function\<? super T,? extends V\> mapper)
 ```
 
 在这种情况下，输入是来自Flux发布者的数据流。**映射器函数将同步应用于Flux发出的每个元素**。输出是一个包含基于提供的映射器函数转换的元素的新Flux。
@@ -68,8 +68,8 @@ public final <V> Flux<V> map(Function<? super T,? extends V> mapper)
 让我们通过将每个值乘以10来将一些数据转换为新序列：
 
 ```java
-Flux<Integer> numbersFlux = Flux.just(50, 51, 52, 53, 54, 55, 56, 57, 58, 59)
-  .map(i -> i * 10)
+Flux\<Integer\> numbersFlux = Flux.just(50, 51, 52, 53, 54, 55, 56, 57, 58, 59)
+  .map(i -\> i * 10)
   .onErrorResume(Flux::error);
 ```
 
@@ -96,17 +96,17 @@ Flux.doOnNext()操作符是一个生命周期钩子，有助于窥视发出的�
 让我们看看doOnNext()操作符的方法定义：
 
 ```java
-public final Flux<T> doOnNext(Consumer<? super T> onNext)
+public final Flux\<T\> doOnNext(Consumer\<? super T\> onNext)
 ```
 
-该方法接受一个Consumer<T>作为参数。**Consumer是一个功能接口，代表一个副作用操作**。它消耗输入但不产生任何输出，使其适合执行副作用操作。
+该方法接受一个Consumer\<T\>作为参数。**Consumer是一个功能接口，代表一个副作用操作**。它消耗输入但不产生任何输出，使其适合执行副作用操作。
 
 ### 4.3. 示例代码
 让我们将doOnNext()操作符应用于在订阅时将数据流中的项目记录到控制台：
 
 ```java
-Flux<Integer> numberFlux = Flux.just(1, 2, 3, 4, 5)
-  .doOnNext(number -> {
+Flux\<Integer\> numberFlux = Flux.just(1, 2, 3, 4, 5)
+  .doOnNext(number -\> {
       LOGGER.info(String.valueOf(number));
   })
   .onErrorResume(Flux::error);
@@ -121,12 +121,12 @@ Flux<Integer> numberFlux = Flux.just(1, 2, 3, 4, 5)
 让我们通过记录项目到控制台并转换原始数据为新数据来窥视发出的数据流中的项目：
 
 ```java
-Flux<Integer> numbersFlux = Flux.just(10, 11, 12, 13, 14)
-  .doOnNext(number -> {
+Flux\<Integer\> numbersFlux = Flux.just(10, 11, 12, 13, 14)
+  .doOnNext(number -\> {
       LOGGER.info("Number: " + number);
   })
-  .map(i -> i * 5)
-  .doOnNext(number -> {
+  .map(i -\> i * 5)
+  .doOnNext(number -\> {
       LOGGER.info("Transformed Number: " + number);
   })
   .onErrorResume(Flux::error);

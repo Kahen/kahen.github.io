@@ -39,7 +39,7 @@ static final String INPUT = "a (b c) d (e f) x (y z)";
 在INPUT中有三对括号。因此，我们期望在以下字符串列表中看到提取的值：
 
 ```java
-static final List<String> EXPECTED = List.of("b c", "e f", "y z");
+static final List\<String\> EXPECTED = List.of("b c", "e f", "y z");
 ```
 
 接下来，让我们看看如何从输入字符串中提取这些字符串值。
@@ -61,7 +61,7 @@ static final List<String> EXPECTED = List.of("b c", "e f", "y z");
 String myRegex = "[(](.*)[)]";
 Matcher myMatcher = Pattern.compile(myRegex)
   .matcher(INPUT);
-List<String> myResult = new ArrayList<>();
+List\<String\> myResult = new ArrayList\<\>();
 while (myMatcher.find()) {
     myResult.add(myMatcher.group(1));
 }
@@ -78,7 +78,7 @@ assertEquals(List.of("b c) d (e f) x (y z"), myResult);
 
 ```java
 String regex = "[(](.*?)[)]";
-List<String> result = new ArrayList<>();
+List\<String\> result = new ArrayList\<\>();
 Matcher matcher = Pattern.compile(regex)
   .matcher(INPUT);
 while (matcher.find()) {
@@ -95,7 +95,7 @@ assertEquals(EXPECTED, result);
 
 ```java
 String regex = "[(]([^)]*)";
-List<String> result = new ArrayList<>();
+List\<String\> result = new ArrayList\<\>();
 Matcher matcher = Pattern.compile(regex)
   .matcher(INPUT);
 while (matcher.find()) {
@@ -114,7 +114,7 @@ assertEquals(EXPECTED, result);
 
 ```java
 String regex = "(?\u003c=[(])[^)]*";
-List<String> result = new ArrayList<>();
+List\<String\> result = new ArrayList\<\>();
 Matcher matcher = Pattern.compile(regex)
     .matcher(INPUT);
 while (matcher.find()) {

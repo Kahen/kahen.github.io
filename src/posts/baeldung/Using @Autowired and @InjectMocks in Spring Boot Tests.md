@@ -28,27 +28,27 @@ tag:
 让我们首先添加所需的依赖项。我们将包括Spring Boot Starter Web和Spring Boot Starter Test依赖项：
 
 ```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-    <version>3.2.5</version>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <version>3.2.5</version>
-    <scope>test</scope>
-</dependency>
+\<dependency\>
+    \<groupId\>org.springframework.boot\</groupId\>
+    \<artifactId\>spring-boot-starter-web\</artifactId\>
+    \<version\>3.2.5\</version\>
+\</dependency\>
+\<dependency\>
+    \<groupId\>org.springframework.boot\</groupId\>
+    \<artifactId\>spring-boot-starter-test\</artifactId\>
+    \<version\>3.2.5\</version\>
+    \<scope\>test\</scope\>
+\</dependency\>
 ```
 
 除此之外，我们还将添加我们将需要模拟我们的服务的Mockito Core依赖项：
 
 ```xml
-<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-core</artifactId>
-    <version>5.11.0</version>
-</dependency>
+\<dependency\>
+    \<groupId\>org.mockito\</groupId\>
+    \<artifactId\>mockito-core\</artifactId\>
+    \<version\>5.11.0\</version\>
+\</dependency\>
 ```
 
 #### 3.2. DTO

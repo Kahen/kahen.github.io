@@ -138,10 +138,10 @@ assertEquals("4 / 3", convertDecimalToFractionUsingApacheCommonsMath(1.333333333
 ```java
 String extractRepeatingDecimal(String fractionalPart) {
     int length = fractionalPart.length();
-    for (int i = 1; i <= length / 2; i++) {
+    for (int i = 1; i \<= length / 2; i++) {
         String sub = fractionalPart.substring(0, i);
         boolean repeating = true;
-        for (int j = i; j + i <= length; j += i) {
+        for (int j = i; j + i \<= length; j += i) {
             if (!fractionalPart.substring(j, j + i).equals(sub)) {
                 repeating = false;
                 break;

@@ -20,7 +20,7 @@ tag:
 让我们创建一个简单的场景，尝试在没有适当异常处理的情况下对包含null值的列表进行排序：
 
 ```java
-List<String> strings = new ArrayList<>();
+List\<String\> strings = new ArrayList\<\>();
 strings.add("BB");
 strings.add("AA");
 strings.add(null);
@@ -54,7 +54,7 @@ Comparator.nullsLast()方法是Java 8中引入的Comparator接口的一部分。
 让我们考虑一个包含null值的String列表strings的实际例子：
 
 ```java
-List<String> strings = new ArrayList<>();
+List\<String\> strings = new ArrayList\<\>();
 strings.add("DD");
 strings.add("BB");
 strings.add(null);
@@ -64,10 +64,10 @@ strings.add("EE");
 
 我们希望在确保null值位于排序列表末尾的同时，按字母顺序对此列表进行排序。
 
-因此，在创建列表后，我们创建了一个Comparator<String>，并使用Comparator.nullsLast(Comparator.naturalOrder())，字符串对象以自然顺序存储，同时将null值视为大于任何非null值：
+因此，在创建列表后，我们创建了一个Comparator\<String\>，并使用Comparator.nullsLast(Comparator.naturalOrder())，字符串对象以自然顺序存储，同时将null值视为大于任何非null值：
 
 ```java
-Comparator<String> nullsLastComparator = Comparator.nullsLast(Comparator.naturalOrder());
+Comparator\<String\> nullsLastComparator = Comparator.nullsLast(Comparator.naturalOrder());
 ```
 
 然后，当我们应用Collections.sort()时，列表将被排序，null值被放置在排序列表的末尾：

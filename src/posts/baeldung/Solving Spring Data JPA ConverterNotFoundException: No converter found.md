@@ -24,11 +24,11 @@ tag:
 为了简化事情，我们将使用H2数据库。首先，让我们在_pom.xml_文件中添加它的依赖：
 
 ```
-<dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <version>2.2.224</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.h2database\</groupId\>
+    \<artifactId\>h2\</artifactId\>
+    \<version\>2.2.224\</version\>
+\</dependency\>
 ```
 
 ### 2.1. H2配置
@@ -77,7 +77,7 @@ public class Employee {
 
 ```
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository\<Employee, Integer\> {
 }
 ```
 
@@ -121,7 +121,7 @@ void givenEmployee_whenGettingFullName_thenThrowException() {
 
     employeeRepository.save(emp);
 
-    assertThatThrownBy(() -> employeeRepository
+    assertThatThrownBy(() -\> employeeRepository
       .findEmployeeFullNameById(1))
       .isInstanceOfAny(ConverterNotFoundException.class)
       .hasMessageContaining("No converter found capable of converting from type"

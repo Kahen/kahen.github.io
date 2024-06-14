@@ -39,7 +39,7 @@ public class Order {
 
     private LocalDateTime orderProcessedTime;
 
-    private List<String> address;
+    private List\<String\> address;
 
     private double price;
 }
@@ -68,7 +68,7 @@ public void handleOrders(String order) throws JsonProcessingException {
 ```java
 @Service
 public class OrderService {
-    HashMap<UUID, Order> orders = new HashMap<>();
+    HashMap\<UUID, Order\> orders = new HashMap\<\>();
 
     public Status findStatusById(UUID orderId) {
         return Status.ORDER_CONFIRMED;
@@ -88,33 +88,33 @@ Spring-Kafka提供了_KafkaBackoffAwareMessageListenerAdapter_，它扩展了_Ab
 现在让我们实现类似于_KafkaBackoffAwareMessageListenerAdapter_的_DelayedMessageListenerAdapter_。这个适配器应该提供灵活性，以按主题配置延迟，以及默认延迟_0_秒：
 
 ```java
-public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessageListenerAdapter<MessageListener<K, V>>
-  implements AcknowledgingConsumerAwareMessageListener<K, V> {
+public class DelayedMessageListenerAdapter\<K, V\> extends AbstractDelegatingMessageListenerAdapter\<MessageListener\<K, V\>\>
+  implements AcknowledgingConsumerAwareMessageListener\<K, V\> {
 
     // 字段声明和构造函数
 
     public void setDelayForTopic(String topic, Duration delay) {
         Objects.requireNonNull(topic, "Topic cannot be null");
         Objects.requireNonNull(delay, "Delay cannot be null");
-        this.logger.debug(() -> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
+        this.logger.debug(() -\> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
         this.delaysPerTopic.put(topic, delay);
     }
 
     public void setDefaultDelay(Duration delay) {
         Objects.requireNonNull(delay, "Delay cannot be null");
-        this.logger.debug(() -> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
+        this.logger.debug(() -\> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
         this.defaultDelay = delay;
     }
 
     @Override
-    public void onMessage(ConsumerRecord<K, V> consumerRecord, Acknowledgment acknowledgment, Consumer<?, ?> consumer) throws KafkaBackoffException {
+    public void onMessage(ConsumerRecord\<K, V\> consumerRecord, Acknowledgment acknowledgment, Consumer\<?, ?\> consumer) throws KafkaBackoffException {
         this.kafkaConsumerBackoffManager.backOffIfNecessary(createContext(consumerRecord,
           consumerRecord.timestamp() + delaysPerTopic.getOrDefault(consumerRecord.topic(), this.defaultDelay)
           .toMillis(), consumer));
         invokeDelegateOnMessage(consumerRecord, acknowledgment, consumer);
     }
 
-    private KafkaConsumerBackoffManager.Context createContext(ConsumerRecord<K, V> data, long nextExecutionTimestamp, Consumer<?, ?> consumer) {
+    private KafkaConsumerBackoffManager.Context createContext(ConsumerRecord\<K, V\> data, long nextExecutionTimestamp, Consumer\<?, ?\> consumer) {
         return this.kafkaConsumerBackoffManager.createContext(nextExecutionTimestamp,
           this.listenerId,
           new TopicPartition(data.topic(), data.partition()), consumer);
@@ -134,15 +134,15 @@ _DelayedMessageListenerAdapter_需要通过声明自定义_ConcurrentKafkaListen
 
 ```java
 @Bean
-public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory,
+public ConcurrentKafkaListenerContainerFactory\<Object, Object\> kafkaListenerContainerFactory(ConsumerFactory\<Object, Object\> consumerFactory,
   ListenerContainerRegistry registry, TaskScheduler scheduler) {
-    ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    ConcurrentKafkaListenerContainerFactory\<Object, Object\> factory = new ConcurrentKafkaListenerContainerFactory\<\>();
     factory.setConsumerFactory(consumerFactory);
     KafkaConsumerBackoffManager backOffManager = createBackOffManager(registry, scheduler);
     factory.getContainerProperties()
       .setAckMode(ContainerProperties.AckMode.RECORD);
-    factory.setContainerCustomizer(container -> {
-        DelayedMessageListenerAdapter<Object, Object> delayedAdapter = wrapWithDelayedMessageListenerAdapter(backOffManager, container);
+    factory.setContainerCustomizer(container -\> {
+        DelayedMessageListenerAdapter\<Object, Object\> delayedAdapter = wrapWithDelayedMessageListenerAdapter(backOffManager, container);
         delayedAdapter.setDelayForTopic("web.orders", Duration.ofSeconds(10));
         delayedAdapter.setDefaultDelay(Duration.ZERO);
         container.setupMessageListener(delayedAdapter);
@@ -151,9 +151,9 @@ public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerCont
 }
 
 @SuppressWarnings("unchecked")
-private DelayedMessageListenerAdapter<Object, Object> wrapWithDelayedMessageListenerAdapter(KafkaConsumerBackoffManager backOffManager,
-  ConcurrentMessageListenerContainer<Object, Object> container) {
-    return new DelayedMessageListenerAdapter<>((MessageListener<Object, Object>) container.getContainerProperties()
+private DelayedMessageListenerAdapter\<Object, Object\> wrapWithDelayedMessageListenerAdapter(KafkaConsumerBackoffManager backOffManager,
+  ConcurrentMessageListenerContainer\<Object, Object\> container) {
+    return new DelayedMessageListenerAdapter\<\>((MessageListener\<Object, Object\>) container.getContainerProperties()
       .getMessageListener(), backOffManager, container.getListenerId());
 }
 
@@ -191,22 +191,22 @@ void givenKafkaBrokerExists_whenCreateOrderIsReceived_thenMessageShouldBeDelayed
       .build();
 
     String orderString = objectMapper.writeValueAsString(order);
-    ProducerRecord<String, String> record = new ProducerRecord<>("web.orders", orderString);
+    ProducerRecord\<String, String\> record = new ProducerRecord\<\>("web.orders", orderString);
 
     // When
     testKafkaProducer.send(record)
       .get();
     await().atMost(Duration.ofSeconds(1800))
-      .until(() -> {
+      .until(() -\> {
           // then
-          Map<UUID, Order> orders = orderService.getOrder继续翻译：
+          Map\<UUID, Order\> orders = orderService.getOrder继续翻译：
 
 ```java
       .getOrders();
           return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
               .getOrderGeneratedDateTime(), orders.get(orderId)
               .getOrderProcessedTime())
-            .getSeconds() >= 10;
+            .getSeconds() \>= 10;
       });
 }
 ```
@@ -226,15 +226,15 @@ void givenKafkaBrokerExists_whenCreateOrderIsReceivedForOtherTopics_thenMessageS
       .build();
 
     String orderString = objectMapper.writeValueAsString(order);
-    ProducerRecord<String, String> record = new ProducerRecord<>("web.internal.orders", orderString);
+    ProducerRecord\<String, String\> record = new ProducerRecord\<\>("web.internal.orders", orderString);
 
     // When
     testKafkaProducer.send(record)
       .get();
     await().atMost(Duration.ofSeconds(1800))
-      .until(() -> {
+      .until(() -\> {
           // Then
-          Map<UUID, Order> orders = orderService.getOrders();
+          Map\<UUID, Order\> orders = orderService.getOrders();
           System.out.println("Time...." + Duration.between(orders.get(orderId)
               .getOrderGeneratedDateTime(), orders.get(orderId)
               .getOrderProcessedTime())
@@ -242,7 +242,7 @@ void givenKafkaBrokerExists_whenCreateOrderIsReceivedForOtherTopics_thenMessageS
           return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
               .getOrderGeneratedDateTime(), orders.get(orderId)
               .getOrderProcessedTime())
-            .getSeconds() <= 1;
+            .getSeconds() \<= 1;
       });
 }
 ```

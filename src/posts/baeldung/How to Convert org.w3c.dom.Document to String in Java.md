@@ -20,18 +20,18 @@ tag:
 本教程的示例将集中在一个描述一些水果的简单XML文档上：
 
 ```
-<fruit>
-    <name>Apple</name>
-    <color>Red</color>
-    <weight unit="grams">150</weight>
-    <sweetness>7</sweetness>
-</fruit>
+\<fruit\>
+    \<name\>Apple\</name\>
+    \<color\>Red\</color\>
+    \<weight unit="grams"\>150\</weight\>
+    \<sweetness\>7\</sweetness\>
+\</fruit\>
 ```
 
 让我们继续从该字符串创建一个XML _Document_对象：
 
 ```java
-private static final String FRUIT_XML = "<fruit><name>Apple</name><color>Red</color><weight unit=\"grams\">150</weight><sweetness>7</sweetness></fruit>";
+private static final String FRUIT_XML = "\<fruit\>\<name\>Apple\</name\>\<color\>Red\</color\>\<weight unit=\"grams\"\>150\</weight\>\<sweetness\>7\</sweetness\>\</fruit\>";
 public static Document getDocument() throws SAXException, IOException, ParserConfigurationException {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     Document document = factory.newDocumentBuilder()
@@ -73,7 +73,7 @@ public static String toString(Document document) throws TransformerException {
 public void givenXMLDocument_thenConvertToStringSuccessfully() throws Exception {
     Document document = XmlDocumentToString.getDocument();
 
-    String expectedDeclartion = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>";
+    String expectedDeclartion = "\<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\>";
     assertEquals(expectedDeclartion + XmlDocumentToString.FRUIT_XML, XmlDocumentToString.toString(document));
 }
 ```
@@ -85,7 +85,7 @@ public void givenXMLDocument_thenConvertToStringSuccessfully() throws Exception 
 现在，让我们看看我们的输出。默认情况下，我们的转换器不会应用任何形式的输出格式化：
 
 ```
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><fruit><name>Apple</name><color>Red</color><weight unit="grams">150</weight><sweetness>7</sweetness></fruit>
+\<?xml version="1.0" encoding="UTF-8" standalone="no"?\>\<fruit\>\<name\>Apple\</name\>\<color\>Red\</color\>\<weight unit="grams"\>150\</weight\>\<sweetness\>7\</sweetness\>\</fruit\>
 ```
 
 显然，对于大型文档，使用这种单行格式化，我们的XML文档很快就会变得难以阅读。幸运的是，_Transformer_接口提供了多种输出属性来帮助我们。
@@ -117,12 +117,12 @@ private static Transformer getTransformer() throws TransformerConfigurationExcep
 通过设置上述属性，我们得到了一个看起来更好的输出：
 
 ```
-<fruit>
-    <name>Apple</name>
-    <color>Red</color>
-    <weight unit="grams">150</weight>
-    <sweetness>7</sweetness>
-</fruit>
+\<fruit\>
+    \<name\>Apple\</name\>
+    \<color\>Red\</color\>
+    \<weight unit="grams"\>150\</weight\>
+    \<sweetness\>7\</sweetness\>
+\</fruit\>
 ```
 
 ## 结论

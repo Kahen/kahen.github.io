@@ -24,21 +24,21 @@ tag:
 我们将使用Apache PDFBox和iText来合并PDF文件。要使用Apache PDFBox，我们需要在_pom.xml_文件中添加以下依赖项：
 
 ```xml
-<dependency>
-    <groupId>org.apache.pdfbox</groupId>
-    <artifactId>pdfbox</artifactId>
-    <version>2.0.31</version>
-</dependency>
+\<dependency\>
+    \<groupId\>org.apache.pdfbox\</groupId\>
+    \<artifactId\>pdfbox\</artifactId\>
+    \<version\>2.0.31\</version\>
+\</dependency\>
 ```
 
 要使用iText，我们需要在_pom.xml_文件中添加以下依赖项：
 
 ```xml
-<dependency>
-    <groupId>com.itextpdf</groupId>
-    <artifactId>itextpdf</artifactId>
-    <version>5.5.13.3</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.itextpdf\</groupId\>
+    \<artifactId\>itextpdf\</artifactId\>
+    \<version\>5.5.13.3\</version\>
+\</dependency\>
 ```
 
 ### 2.2. 测试设置
@@ -48,7 +48,7 @@ tag:
 ```java
 static void createPDFDoc(String content, String filePath) throws IOException {
     PDDocument document = new PDDocument();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i \< 3; i++) {
         PDPage page = new PDPage();
         document.addPage(page);
 
@@ -72,7 +72,7 @@ public void create() throws IOException {
     File tempDirectory = new File("src/test/resources/temp");
     tempDirectory.mkdirs();
     List.of(List.of("hello_world1", "file1.pdf"), List.of("hello_world2", "file2.pdf"))
-        .forEach(pair -> {
+        .forEach(pair -\> {
             try {
                 createPDFDoc(pair.get(0), pair.get(1));
             } catch (IOException e) {
@@ -83,9 +83,9 @@ public void create() throws IOException {
 
 @AfterEach
 public void destroy() throws IOException {
-    Stream<Path> paths = Files.walk(Paths.get("src/test/resources/temp/"));
-    paths.sorted((p1, p2) -> -p1.compareTo(p2))
-         .forEach(path -> {
+    Stream\<Path\> paths = Files.walk(Paths.get("src/test/resources/temp/"));
+    paths.sorted((p1, p2) -\> -p1.compareTo(p2))
+         .forEach(path -\> {
             try {
                 Files.delete(path);
             } catch (IOException e) {
@@ -102,11 +102,11 @@ Apache PDFBox是一个开源的Java库，用于处理PDF文档。它提供了一
 **PDFBox提供了一个_PDFMergerUtility_帮助类来合并多个PDF文档。我们可以使用_addSource()_方法添加PDF文件。_mergeDocuments()_方法合并所有添加的源，结果是一个最终合并的PDF文档：**
 
 ```java
-void mergeUsingPDFBox(List<String> pdfFiles, String outputFile) throws IOException {
+void mergeUsingPDFBox(List\<String\> pdfFiles, String outputFile) throws IOException {
     PDFMergerUtility pdfMergerUtility = new PDFMergerUtility();
     pdfMergerUtility.setDestinationFileName(outputFile);
 
-    pdfFiles.forEach(file -> {
+    pdfFiles.forEach(file -\> {
         try {
             pdfMergerUtility.addSource(new File(file));
         } catch (FileNotFoundException e) {
@@ -125,7 +125,7 @@ void mergeUsingPDFBox(List<String> pdfFiles, String outputFile) throws IOExcepti
 ```java
 @Test
 void givenMultiplePdfs_whenMergeUsingPDFBoxExecuted_thenPdfsMerged() throws IOException {
-    List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
+    List\<String\> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
     PDFMerge pdfMerge = new PDFMerge();
     pdfMerge.mergeUsingPDFBox(files, "src/test/resources/temp/output.pdf");
 
@@ -154,8 +154,8 @@ iText是另一个流行的Java库，用于创建和操作PDF文档。它提供�
 **iText提供了_PdfReader_和_PdfWriter_类，这些类在读取输入文件和将它们写入输出文件时非常有用：**
 
 ```java
-void mergeUsingIText(List<String> pdfFiles, String outputFile) throws IOException, DocumentException {
-    List<PdfReader> pdfReaders = List.of(new PdfReader(pdfFiles.get(0)), new PdfReader(pdfFiles.get(1)));
+void mergeUsingIText(List\<String\> pdfFiles, String outputFile) throws IOException, DocumentException {
+    List\<PdfReader\> pdfReaders = List.of(new PdfReader(pdfFiles.get(0)), new PdfReader(pdfFiles.get(1)));
     Document document = new Document();
     FileOutputStream fos = new FileOutputStream(outputFile);
     PdfWriter writer = PdfWriter.getInstance(document, fos);
@@ -164,7 +164,7 @@ void mergeUsingIText(List<String> pdfFiles, String outputFile) throws IOExceptio
     PdfImportedPage pdfImportedPage;
     for (PdfReader pdfReader : pdfReaders) {
         int currentPdfReaderPage = 1;
-        while (currentPdfReaderPage <= pdfReader.getNumberOfPages()) {
+        while (currentPdfReaderPage \<= pdfReader.getNumberOfPages()) {
             document.newPage();
             pdfImportedPage = writer.getImportedPage(pdfReader, currentPdfReaderPage);
             directContent.addTemplate(pdfImportedPage, 0, 0);
@@ -184,7 +184,7 @@ void mergeUsingIText(List<String> pdfFiles, String outputFile) throws IOExceptio
 ```java
 @Test
 void givenMultiplePdfs_whenMergeUsingITextExecuted_thenPdfsMerged() throws IOException, DocumentException {
-    List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
+    List\<String\> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
     PDFMerge pdfMerge = new PDFMerge();
     pdfMerge.mergeUsingIText(files, "src/test/resources/temp/output1.pdf");
     try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output1.pdf"))) {

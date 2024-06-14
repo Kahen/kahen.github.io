@@ -23,23 +23,23 @@ tag:
 首先，我们必须为我们的项目导入所需的依赖项。我们可以在Maven仓库中找到这些库。**这三个模块专门用于交互的不同方面：**
 
 ```xml
-<dependency>
-    <groupId>com.theokanning.openai-gpt3-java</groupId>
-    <artifactId>service</artifactId>
-    <version>0.18.2</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.theokanning.openai-gpt3-java\</groupId\>
+    \<artifactId\>service\</artifactId\>
+    \<version\>0.18.2\</version\>
+\</dependency\>
 
-<dependency>
-    <groupId>com.theokanning.openai-gpt3-java</groupId>
-    <artifactId>api</artifactId>
-    <version>0.18.2</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.theokanning.openai-gpt3-java\</groupId\>
+    \<artifactId\>api\</artifactId\>
+    \<version\>0.18.2\</version\>
+\</dependency\>
 
-<dependency>
-    <groupId>com.theokanning.openai-gpt3-java</groupId>
-    <artifactId>client</artifactId>
-    <version>0.18.2</version>
-</dependency>
+\<dependency\>
+    \<groupId\>com.theokanning.openai-gpt3-java\</groupId\>
+    \<artifactId\>client\</artifactId\>
+    \<version\>0.18.2\</version\>
+\</dependency\>
 ```
 
 请注意，名称明确提到了GPT3，但它也适用于GPT4。
@@ -112,7 +112,7 @@ public enum ModelEnum {
 接下来是我们创建的消息。我们使用_ChatMessage_类来实现它。在我们的案例中，我们只传递角色和消息本身：
 
 ```java
-List<ChatMessage> messages = new ArrayList<>();
+List\<ChatMessage\> messages = new ArrayList\<\>();
 ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), PROMPT);
 messages.add(systemMessage);
 ```
@@ -201,7 +201,7 @@ public static void main(String[] args) {
     String token = System.getenv("OPENAI_TOKEN");
     OpenAiService service = new OpenAiService(token);
 
-    List<ChatMessage> messages = new ArrayList<>();
+    List\<ChatMessage\> messages = new ArrayList\<\>();
     ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), PROMPT);
     messages.add(systemMessage);
 

@@ -160,7 +160,7 @@ public boolean equals(Object obj) {
 我们将考虑两种情况，具有相同小数位数的数字和具有不同小数位数的数字：
 
 ```java
-static Stream<Arguments> numbersWithDifferentScaleProvider() {
+static Stream\<Arguments\> numbersWithDifferentScaleProvider() {
     return Stream.of(
       Arguments.of("0", "0.0"), Arguments.of("1", "1.0"),
       Arguments.of("2", "2.0"), Arguments.of("3", "3.0"),
@@ -168,7 +168,7 @@ static Stream<Arguments> numbersWithDifferentScaleProvider() {
       Arguments.of("6", "6.0"), Arguments.of("7", "7.0")
     );
 }
-static Stream<Arguments> numbersWithSameScaleProvider() {
+static Stream\<Arguments\> numbersWithSameScaleProvider() {
     return Stream.of(
       Arguments.of("0", "0"), Arguments.of("1", "1"),
       Arguments.of("2", "2"), Arguments.of("3", "3"),
