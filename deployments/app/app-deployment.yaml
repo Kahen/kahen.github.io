@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: baeldung-zh-page
+spec:
+  type: ClusterIP
+  selector:
+    app: baeldung-zh-page
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http # same name defined in the Deployment path spec.template.spec.containers[0].ports[0].name
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baeldung-zh-page
+  labels:
+    app: baeldung-zh-page
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baeldung-zh-page
+  template:
+    metadata:
+      labels:
+        app: baeldung-zh-page
+    spec:
+      containers:
+        - name: baeldung-zh-page
+          image: <REGISTRY>/<REGISTRY_NAMESPACE>/<APP_NAME>:<VERSION>
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+
+      imagePullSecrets:
+        - name: aliyuncs-kahen
