@@ -82,7 +82,7 @@ Failsafe.with(defaultFallback, npeFallback, ioFallback)
 
 一旦我们组合了策略，Failsafe将返回一个_FailsafeExecutor_实例给我们。**然后，这个实例有一组方法，我们可以使用它们来执行我们的操作，具体取决于我们想要执行什么以及我们希望如何返回结果。**
 
-执行操作最直接的方式是_T_ _get`<T>``(CheckedSupplier`<T>`)_ 和 _void_ _run(CheckedRunnable)_。_CheckedSupplier_和_CheckedRunnable_都是功能接口，这意味着如果需要，我们可以使用lambda或方法引用来调用这些方法。
+执行操作最直接的方式是_T_ _get`<T>(CheckedSupplier<T>`)_ 和 _void_ _run(CheckedRunnable)_。_CheckedSupplier_和_CheckedRunnable_都是功能接口，这意味着如果需要，我们可以使用lambda或方法引用来调用这些方法。
 
 这两种方法的区别在于_get()_将返回操作的结果，而_run()_将返回_void_——并且操作也必须返回_void_：
 
