@@ -7,7 +7,7 @@ tag:
   - SQL Syntax Error
   - Table Not Found
 ---
-修复Spring Boot H2 JdbcSQLSyntaxErrorException “找不到表” | Baeldung
+# 修复Spring Boot H2 JdbcSQLSyntaxErrorException “找不到表” | Baeldung
 
 ### 1. 引言
 
