@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://kahen.github.io/sitemap.xml
+Sitemap: https://kahen.xyz/sitemap.xml
