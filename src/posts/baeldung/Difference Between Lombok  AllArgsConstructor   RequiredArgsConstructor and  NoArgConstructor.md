@@ -1,4 +1,4 @@
-由于我目前无法访问外部链接，包括您提供的链接，因此无法获取网页内容来进行翻译。请您提供网页的文本内容，或者直接告诉我需要翻译的具体内容，我将为您提供翻译服务。---
+---
 date: 2024-06-17
 category:
   - Java
@@ -174,5 +174,3 @@ void whenUsingRequiredArgsConstructorWithStaticName_thenHideTheConstructor() {
 如常，所有示例的源代码都可以在 GitHub 上找到。
 
 文章发布后30天内开放评论。对于此日期之后的任何问题，请使用网站上的联系表单。
-
-OK
