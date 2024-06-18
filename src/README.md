@@ -6,7 +6,7 @@ title: Baeldung 中文网
 heroImage: https://theme-hope-assets.vuejs.press/logo.svg
 heroText: Baeldung 中文网
 heroFullScreen: true
-tagline: Baeldung中文网帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。
+tagline: Baeldung 中文网帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。
 #projects:
 #  - icon: project
 #    name: 项目名称

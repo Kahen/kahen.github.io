@@ -64,10 +64,11 @@ def fetch_output(link, title):
 
     # Create the file path
     file_path = os.path.join('src', 'posts', 'baeldung', f'{title}.md')
-
-    # Write the response to the file
-    with open(file_path, 'w') as f:
-        f.write(process_text(response.text))
+    content = response.text
+    if len(content) > 200:
+        # Write the response to the file
+        with open(file_path, 'w') as f:
+            f.write(process_text(content))
 
 
 import re

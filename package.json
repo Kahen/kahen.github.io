@@ -1,7 +1,7 @@
 {
   "name": "baeldung-zh",
   "version": "2.0.0",
-  "description": "Baeldung ZH帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。",
+  "description": "Baeldung 中文网帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。",
   "license": "MIT",
   "type": "module",
   "scripts": {
