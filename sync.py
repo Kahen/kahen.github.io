@@ -49,7 +49,7 @@ def fetch_output(link, title):
         "messages": [
             {
                 "role": "user",
-                "content": "翻译成中文,包括标题。除此之外不要说任何话。 \n链接：" + link + " \n1.注意category和tag和标题你要在页面文章信息中实时获取并翻译;\n2.date是页面的“Last updated”的值，不是当前时间;\n3.内容在输出标题后,标题也需要翻译 \n4.要求输出结果要有以下格式\n---\ndate: {yyyy-MM-DD}\ncategory:\n  - {category}\n  - {category2}\ntag:\n  - {tag1}\n  - {tag2}\n---\n# {标题}"
+                "content": "翻译成中文,包括标题。除此之外不要说任何话。 \n链接：" + link + " \n1.注意category和tag和标题你要在页面文章信息中实时获取并翻译;\n2.date是页面的“Last updated”的值，不是当前时间;\n3.内容在输出标题后,标题也需要翻译 \n4.要求输出结果要有以下格式\n---\ndate: {yyyy-MM-DD}\ncategory:\n  - {category}\n  - {category2}\ntag:\n  - {tag1}\n  - {tag2}\nhead:\n  - - meta\n    - name: {keywords}\n      content: {SEO content}\n------\n# {标题} \n"
             }
         ],
         "use_search": True,
