@@ -38,5 +38,5 @@ tagline: Baeldung 中文网帮助开发人员探索 Java 生态系统并成为�
 #    desc: 自定义详细介绍
 #    link: https://你的自定义链接
 
-footer: 一分耕耘，一分收获
+footer: 一分耕耘，一分收获 粤ICP备2024249047号-2
 ---
