@@ -3,6 +3,7 @@ import re
 import requests
 import json
 import os
+import datetime
 
 kimi_token = os.environ["KIMI_TOKEN"]
 strapi_token = os.environ["STRAPI_TOKEN"]
@@ -62,8 +63,22 @@ def fetch_output(link, title):
 
     response = requests.request("POST", url, headers=headers, data=payload)
 
+
+    # Get today's date and format it as a string
+    today = datetime.date.today().strftime('%Y-%m-%d')
+
+    # Create the folder path
+    folder_path = os.path.join('src', 'posts', 'baeldung', today)
+
+    # Check if the folder exists
+    if not os.path.isdir(folder_path):
+        # If the folder does not exist, create it
+        os.makedirs(folder_path)
+
     # Create the file path
-    file_path = os.path.join('src', 'posts', 'baeldung', f'{title}.md')
+    file_path = os.path.join(folder_path, f'{safe_title}.md')
+
+    # The rest of your code...
     content = response.text
     if len(content) > 200:
         # Write the response to the file
@@ -71,7 +86,6 @@ def fetch_output(link, title):
             f.write(process_text(content))
 
 
-import re
 
 
 def process_text(input_text):

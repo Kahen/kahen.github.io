@@ -11,3 +11,4 @@ src/.vuepress/dist/
 *.iml
 out
 gen
+.env

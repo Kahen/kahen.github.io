@@ -153,3 +153,4 @@ node_modules
 .git
 .gitignore
 *.md
+!/.env
