@@ -26,7 +26,7 @@ jobs:
 
     - name: Run Script
       env:
-        KIMI_TOKEN: ${{ secrets.KIMI_TOEKN2 }}
+        KIMI_TOKEN: ${{ secrets.KIMI_TOKEN2 }}
         STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
         KIMI_HOST: ${{ secrets.KIMI_HOST }}
         STRAPI_HOST: ${{ secrets.STRAPI_HOST }}
