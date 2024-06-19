@@ -31,16 +31,19 @@ for entry in feedblitz_baeldung['entries']:
     orignal_link = entry['feedburner_origlink']
     title= entry['title']
     # written= "".join(entry['authors'])
-
+    tags = []
+    for item in entry['tags']:
+        tags.append(item['term'])
     # check if the link is already in the database
-    if check_duplicate(orignal_link) is False:
+    if check_duplicate(orignal_link) is True:
         url = f"https://{strapi_host}/api/blogs"
 
         payload = json.dumps({
             "data": {
                 "crawled": False,
                 "link": orignal_link,
-                "title": title
+                "title": title,
+                "categories_name": tags
             }
         })
         headers = {
