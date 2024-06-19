@@ -68,7 +68,7 @@ def fetch_output(link, title):
     today = datetime.date.today().strftime('%Y-%m-%d')
 
     # Create the folder path
-    folder_path = os.path.join('src', 'posts', 'baeldung', today)
+    folder_path = os.path.join('src', 'posts', 'baeldung')
 
     # Check if the folder exists
     if not os.path.isdir(folder_path):
@@ -76,7 +76,7 @@ def fetch_output(link, title):
         os.makedirs(folder_path)
 
     # Create the file path
-    file_path = os.path.join(folder_path, f'{safe_title}.md')
+    file_path = os.path.join(folder_path, f'{today}-{safe_title}.md')
 
     # The rest of your code...
     content = response.text
