@@ -1,5 +1,5 @@
 ---
-date: {2024-06-17}
+date: 2024-06-17
 category:
   - Java
   - 数据类型转换
@@ -355,5 +355,3 @@ assertThrows(IllegalArgumentException.class, () -> intToShort(oneMillion));
 如常，示例的完整源代码可在GitHub上找到。
 
 文章发布后30天内开放评论。对于此日期之后的任何问题，请使用网站上的联系表单。
-
-OK
