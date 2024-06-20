@@ -2,7 +2,7 @@
 home: true
 layout: BlogHome
 icon: home
-title: Baeldung 中文网 | Java教程，Spring教程
+title: Baeldung 中文网
 heroImage: https://www.kahen.xyz/logo.svg
 heroText: Baeldung 中文网 | Java教程，Spring教程
 heroFullScreen: true
