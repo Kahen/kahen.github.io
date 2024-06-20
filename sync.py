@@ -80,7 +80,7 @@ def fetch_output(link, title):
 
     # The rest of your code...
     content = response.text
-    if len(content) > 200:
+    if len(content) > 200 and "Cloudflare" not in content and "Cloudflare" not in title:
         # Write the response to the file
         with open(file_path, 'w') as f:
             f.write(process_text(content))
