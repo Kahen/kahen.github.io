@@ -14,7 +14,7 @@ export default hopeTheme({
 
   logo: "logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "https://www.kahen.xyz",
 
   docsDir: "src",
 
@@ -25,7 +25,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "粤ICP备2024249047号-2",
   displayFooter: true,
 
   // 博客相关

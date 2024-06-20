@@ -2,11 +2,11 @@
 home: true
 layout: BlogHome
 icon: home
-title: Baeldung 中文网
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
-heroText: Baeldung 中文网
+title: Baeldung 中文网 | Java教程，Spring教程
+heroImage: https://www.kahen.xyz/logo.svg
+heroText: Baeldung 中文网 | Java教程，Spring教程
 heroFullScreen: true
-tagline: Baeldung 中文网帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。
+tagline: Java教程，Spring教程，Baeldung 中文网帮助开发人员探索 Java 生态系统并成为更好的工程师。 我们发布重点指南和课程，重点关注构建 Web 应用程序、Spring、Spring Security 和 RESTful API。
 #projects:
 #  - icon: project
 #    name: 项目名称
