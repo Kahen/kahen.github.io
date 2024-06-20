@@ -35,7 +35,7 @@ for entry in feedblitz_baeldung['entries']:
     for item in entry['tags']:
         tags.append(item['term'])
     # check if the link is already in the database
-    if check_duplicate(orignal_link) is True:
+    if check_duplicate(orignal_link) is False:
         url = f"https://{strapi_host}/api/blogs"
 
         payload = json.dumps({
