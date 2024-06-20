@@ -31,4 +31,4 @@ jobs:
         KIMI_HOST: ${{ secrets.KIMI_HOST }}
         STRAPI_HOST: ${{ secrets.STRAPI_HOST }}
       run: |
-        python feed.py
+        python kotlin_feed.py
