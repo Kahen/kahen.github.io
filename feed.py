@@ -30,6 +30,8 @@ feedblitz_baeldung = feedparser.parse('https://feeds.feedblitz.com/baeldung')
 for entry in feedblitz_baeldung['entries']:
     orignal_link = entry['feedburner_origlink']
     title= entry['title']
+    if "Weekly" in title:
+        continue
     # written= "".join(entry['authors'])
     tags = []
     for item in entry['tags']:
