@@ -10,9 +10,6 @@ head:
   - - meta
     - name: keywords
       content: Spring Boot, OpenAPI, Code Generation, Customization
-  - - meta
-    - name: description
-      content: Learn how to customize OpenAPI Generator templates for Spring Boot applications.
 ------
 # OpenAPI 生成器自定义模板 | Baeldung
 
@@ -242,14 +239,14 @@ package com.baeldung.tutorials.openapi.quotes.api;
 
 ### 4.3. 探索基础模板
 
-现在，让我们看看我们的模板，找到添加自定义的正确位置。我们可以看到，有一个由 _{{#operation}}_ _{{/operation}}_ 标签定义的部分，在渲染的类中输出委派的方法：
+现在，让我们看看我们的模板，找到添加自定义的正确位置。我们可以看到，有一个由 {{\#operation}} {{\/operation}} 标签定义的部分，在渲染的类中输出委派的方法：
 
 ```java
-    {{#operation}}
+    {{\#operation}}
         // ... many mustache tags omitted
         {{#jdk8-default-interface}}default // ... more template logic omitted
 
-    {{/operation}}
+    {{\/operation}}
 ```
 
 在这个部分，模板使用当前上下文的多个属性——一个操作——来生成相应的方法声明。
