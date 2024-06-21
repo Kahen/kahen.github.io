@@ -68,7 +68,7 @@ def fetch_output(link, title):
     today = datetime.date.today().strftime('%Y-%m-%d')
 
     # Create the folder path
-    folder_path = os.path.join('src', 'posts', 'baeldung')
+    folder_path = os.path.join('src', 'posts', 'baeldung', today)
 
     # Check if the folder exists
     if not os.path.isdir(folder_path):
