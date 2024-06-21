@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # manual trigger
   schedule:
     # Runs every 60 min
-    - cron:  '0 * * * *'
+    - cron:  '15 * * * *'
 
 jobs:
   build:
