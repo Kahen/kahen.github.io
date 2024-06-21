@@ -4,7 +4,7 @@ category:
   - Spring
   - Kotlin
 tag:
-  - @Value
+  - Value注解
   - Annotation
 head:
   - - meta
