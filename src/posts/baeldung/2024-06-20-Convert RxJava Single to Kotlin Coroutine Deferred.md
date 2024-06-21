@@ -1,5 +1,4 @@
 ---
-
 date: 2024-06-20
 category:
   - Kotlin
@@ -61,10 +60,10 @@ private val allProducts = listOf(
 )
 ```
 
-接下来，我们创建一个函数，该函数产生一个经过价格过滤和排序的 **Single``<List`<Product>```>**：
+接下来，我们创建一个函数，该函数产生一个经过价格过滤和排序的 **Single`\<List\<Product\>``>**：
 
 ```kotlin
-private fun getFilteredProducts(): Single``<List`<Product>```> {
+private fun getFilteredProducts(): Single`\<List\<Product\>``> {
     return Single.just(
       allProducts
     ).map { products ->
@@ -76,8 +75,8 @@ private fun getFilteredProducts(): Single``<List`<Product>```> {
 让我们还准备一个稍后可以使用的函数，以验证结果是否符合我们的期望：
 
 ```kotlin
-private suspend fun `````````<T>````````` Deferred`````````<T>`````````.assertOver500AndSorted() {
-    assertThat(this.await() as List`<*>`).containsExactly(
+private suspend fun ````````\<T\>```````` Deferred````````\<T\>````````.assertOver500AndSorted() {
+    assertThat(this.await() as List\<*\>).containsExactly(
       Product(4, "Lenovo", 550.0),
       Product(2, "Oppo", 800.0),
       Product(1, "Samsung", 1200.0)
@@ -85,7 +84,7 @@ private suspend fun `````````<T>````````` Deferred`````````<T>`````````.assertOv
 }
 ```
 
-这个函数将验证结果确实是一个代表过滤过的 **List`<Product>`** 的 **Deferred** 对象：
+这个函数将验证结果确实是一个代表过滤过的 **List\<Product\>** 的 **Deferred** 对象：
 
 ```kotlin
 deferred.assertOver500AndSorted()
@@ -98,7 +97,7 @@ deferred.assertOver500AndSorted()
 **async** 函数用于异步启动协程的执行。当我们使用 **async** 函数时，将启动一个协程来执行给定任务，并返回表示任务结果的 **Deferred**：
 
 ```kotlin
-val futureResult: Deferred`````````<T>````````` = async { /* 执行某些操作 */ }
+val futureResult: Deferred````````\<T\>```````` = async { /* 执行某些操作 */ }
 ```
 
 在这种情况下，我们使用 RxJava 的 **blockingGet()** 方法，该方法以阻塞的方式等待当前 **Single** 发出一个成功值（返回）或一个异常（传播）。
@@ -128,7 +127,7 @@ public abstract fun completeExceptionally(exception: kotlin.Throwable): kotlin.B
 因此，我们将使用 **complete()** 函数将 **Single** 的 **subscribe()** 操作的结果发送出去，然后存储在 **CompletableDeferred** 中：
 
 ```kotlin
-val deferred = CompletableDeferred`````````<T>`````````()
+val deferred = CompletableDeferred````````\<T\>````````()
 getFilteredProducts().subscribe(deferred::complete, deferred::completeExceptionally)
 ```
 
@@ -141,16 +140,16 @@ getFilteredProducts().subscribe(deferred::complete, deferred::completeExceptiona
 **suspendCoroutine** 是 Kotlin 协程中的一个函数，用于挂起协程的执行并等待 lambda 的结果：
 
 ```kotlin
-suspend inline fun `````````<T>````````` suspendCoroutine(
-  crossinline block: (Continuation`````````<T>`````````) -> kotlin.Unit
+suspend inline fun ````````\<T\>```````` suspendCoroutine(
+  crossinline block: (Continuation````````\<T\>````````) -> kotlin.Unit
 ): T
 ```
 
 而 **suspendCancellableCoroutine** 就像 **suspendCoroutine**，但增加了在等待时取消协程的能力。这使用 **continuation.cancel()** 来取消例程：
 
 ```kotlin
-public suspend inline fun `````````<T>````````` suspendCancellableCoroutine(
-  crossinline block: (CancellableContinuation`````````<T>`````````) -> kotlin.Unit
+public suspend inline fun ````````\<T\>```````` suspendCancellableCoroutine(
+  crossinline block: (CancellableContinuation````````\<T\>````````) -> kotlin.Unit
 ): T
 ```
 
@@ -175,11 +174,11 @@ Kotlinx Coroutines Rx3 是 Kotlin 协程生态系统的一部分，它提供了 
 但是，由于这还不是默认 Kotlin 协程的一部分，我们必须首先将其声明为依赖项：
 
 ```groovy
-`<dependency>`
-    `<groupId>`org.jetbrains.kotlinx`</groupId>`
-    `<artifactId>`kotlinx-coroutines-rx3`</artifactId>`
-    `<version>`1.8.0`</version>`
-`</dependency>`
+\<dependency\>
+    \<groupId\>org.jetbrains.kotlinx\</groupId\>
+    \<artifactId\>kotlinx-coroutines-rx3\</artifactId\>
+    \<version\>1.8.0\</version\>
+\</dependency\>
 ```
 
 这种集成允许我们在 Kotlin 核心例程中使用 RxJava 3 操作符和 flows，以及在 RxJava 3 数据类型（如 Completable、Single 或 Observable）与 Kotlin 核心数据类型（如 Deferred 或 Flow）之间进行转换。
@@ -187,7 +186,7 @@ Kotlinx Coroutines Rx3 是 Kotlin 协程生态系统的一部分，它提供了 
 Kotlinx Coroutines Rx3 有一个 **await()** 函数，用于等待 Single 值响应的完成，而不会阻塞线程。如果响应中出现错误，它将返回结果值或抛出异常：
 
 ```kotlin
-suspend fun `````````<T>````````` SingleSource`<T & Any>`.await(): T
+suspend fun \<T\> SingleSource\<T & Any\>.await(): T
 ```
 
 因此，我们使用 **Single.await()** 创建 **Deferred** 并用 **async** 包装它。
