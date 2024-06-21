@@ -44,7 +44,7 @@ export default {
             const token = _.sample(tokens);
             const {model, conversation_id: convId, messages, stream, use_search} = request.body;
             const response_text = await chat.createCompletion(model, messages, token, use_search, convId);
-            rep += response_text['choices'][0]['message'].content;
+            if (response_text['choices'][0]['message'].content.length > 200) rep += response_text['choices'][0]['message'].content;
             messages.push(
                 response_text['choices'][0]['message']
             )
@@ -53,7 +53,7 @@ export default {
                 "content": "如果翻译没有结束请继续,结束了请回复OK"
             })
             const response_text2 = await chat.createCompletion(model, messages, token, use_search, convId);
-            if (response_text2['choices'][0]['message'].content !== "OK") {
+            if (response_text2['choices'][0]['message'].content !== "OK" && response_text2['choices'][0]['message'].content.length > 200) {
                 rep += response_text2['choices'][0]['message'].content;
             }
             return rep;
