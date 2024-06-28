@@ -5,9 +5,9 @@ on:
       # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
       # Runs every day at 00:00
     - cron:  '0 0 * * *'
-  workflow_run:
-    workflows: [Python application]
-    types: [completed]
+  # workflow_run:
+  #   workflows: [Python application]
+  #   types: [completed]
 jobs:
   docker:
     environment: deployhcs
