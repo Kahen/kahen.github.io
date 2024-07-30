@@ -4,7 +4,7 @@
 name: Python application
 
 on:
-  workflow_run:
+  #workflow_run:
     # workflows: [Python application2]
     # types: [completed]
   workflow_dispatch: # manual trigger
