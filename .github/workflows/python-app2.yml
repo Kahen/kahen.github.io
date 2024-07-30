@@ -5,7 +5,7 @@ name: Python application2
 
 on:
   workflow_dispatch: # manual trigger
-  schedule:
+  #schedule:
     # Runs every 60 min
     #- cron:  '45 * * * *'
 
